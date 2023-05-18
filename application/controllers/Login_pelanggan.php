@@ -29,4 +29,43 @@ class Login_pelanggan extends CI_Controller {
 		$data['title'] = "Register - SPASI";
 		$this->load->view('page_pelanggan/login/v_daftar_pelanggan', $data);
 	}
+
+	public function proses_tambah_pelanggan()
+	{
+		$config['upload_path']          = './assets/upload/pelanggan';
+        $config['allowed_types']        = 'gif|jpg|png|PNG';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('userfile')) {
+            echo "Gagal Tambah";
+        } else {
+			
+		$foto 		= $this->upload->data();
+        $foto 		= $foto['file_name'];
+		$nama 		= $this->input->post('nama');
+		$alamat 	= $this->input->post('alamat');
+		$no_telp 	= $this->input->post('no_telp');
+		$username 	= $this->input->post('username');
+		$password 	= $this->input->post('password');
+		$id_level 	= $this->input->post('id_level');
+
+		$data = array(
+			'nama' 		=> ucwords($nama),
+            'alamat' 	=> $alamat,
+			'no_telp' 	=> $no_telp,
+			'foto' 		=> $foto,
+			'username' 	=> $username,
+			'password' 	=> md5($password),
+			'id_level' 	=> $id_level,
+        );
+        
+		$this->db->insert('tb_pelanggan', $data);
+        redirect('login_pelanggan');
+
+		}
+	}
 }
