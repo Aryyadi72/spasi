@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 18, 2023 at 10:01 PM
+-- Generation Time: May 21, 2023 at 10:03 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -120,6 +120,7 @@ CREATE TABLE `tb_produk` (
   `harga_produk` varchar(100) NOT NULL,
   `deskripsi_produk` varchar(255) NOT NULL,
   `stok` int NOT NULL,
+  `tanggal_ditambahkan` date NOT NULL,
   `id_sasirangan` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -127,8 +128,8 @@ CREATE TABLE `tb_produk` (
 -- Dumping data for table `tb_produk`
 --
 
-INSERT INTO `tb_produk` (`id_produk`, `harga_produk`, `deskripsi_produk`, `stok`, `id_sasirangan`) VALUES
-(1, '20000', 'Sasirangan Kece Badai Best Seller', 20, 3);
+INSERT INTO `tb_produk` (`id_produk`, `harga_produk`, `deskripsi_produk`, `stok`, `tanggal_ditambahkan`, `id_sasirangan`) VALUES
+(5, '20000', 'Kain Sasirangan', 20, '2023-05-20', 2);
 
 -- --------------------------------------------------------
 
@@ -150,6 +151,19 @@ CREATE TABLE `tb_sasirangan` (
 INSERT INTO `tb_sasirangan` (`id_sasirangan`, `nama_sasirangan`, `jenis_sasirangan`, `foto_sasirangan`) VALUES
 (2, 'Sasirangan Berang Berang', 'Motif Berang Berang', '31.jpg'),
 (3, 'Sasirangan Jantung Paus', 'Motif Jantung Paus', '5.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_transaksi_batal`
+--
+
+CREATE TABLE `tb_transaksi_batal` (
+  `id_transaksi_batal` int NOT NULL,
+  `tanggal_transaksi_batal` date NOT NULL,
+  `id_pengelola` int NOT NULL,
+  `id_transaksi_masuk` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -253,6 +267,14 @@ ALTER TABLE `tb_sasirangan`
   ADD PRIMARY KEY (`id_sasirangan`);
 
 --
+-- Indexes for table `tb_transaksi_batal`
+--
+ALTER TABLE `tb_transaksi_batal`
+  ADD PRIMARY KEY (`id_transaksi_batal`),
+  ADD KEY `fk_batal_pengelola` (`id_pengelola`),
+  ADD KEY `fk_batal_masuk` (`id_transaksi_masuk`);
+
+--
 -- Indexes for table `tb_transaksi_keluar`
 --
 ALTER TABLE `tb_transaksi_keluar`
@@ -315,31 +337,37 @@ ALTER TABLE `tb_pengelola`
 -- AUTO_INCREMENT for table `tb_produk`
 --
 ALTER TABLE `tb_produk`
-  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_sasirangan`
 --
 ALTER TABLE `tb_sasirangan`
-  MODIFY `id_sasirangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_sasirangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tb_transaksi_batal`
+--
+ALTER TABLE `tb_transaksi_batal`
+  MODIFY `id_transaksi_batal` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_keluar`
 --
 ALTER TABLE `tb_transaksi_keluar`
-  MODIFY `id_transaksi_keluar` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_keluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_masuk`
 --
 ALTER TABLE `tb_transaksi_masuk`
-  MODIFY `id_transaksi_masuk` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_masuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_proses`
 --
 ALTER TABLE `tb_transaksi_proses`
-  MODIFY `id_transaksi_proses` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_proses` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_ulasan`
@@ -376,6 +404,13 @@ ALTER TABLE `tb_pengelola`
 --
 ALTER TABLE `tb_produk`
   ADD CONSTRAINT `fk_id_sasirangan` FOREIGN KEY (`id_sasirangan`) REFERENCES `tb_sasirangan` (`id_sasirangan`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_transaksi_batal`
+--
+ALTER TABLE `tb_transaksi_batal`
+  ADD CONSTRAINT `fk_batal_masuk` FOREIGN KEY (`id_transaksi_masuk`) REFERENCES `tb_transaksi_masuk` (`id_transaksi_masuk`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_batal_pengelola` FOREIGN KEY (`id_pengelola`) REFERENCES `tb_pengelola` (`id_pengelola`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_transaksi_keluar`
