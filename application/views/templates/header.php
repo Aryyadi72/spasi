@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title><?= $title ?></title>
+    <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/clothes-basket.svg" />
     <!-- CSS Datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <!-- CSS files -->
@@ -42,7 +43,8 @@
           </button>
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href=".">
-              <img src="<?= base_url()?>./assets/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+              <img src="<?= base_url()?>assets/img/clothes-basket.svg" alt="Tabler" class="navbar-brand-image" style="margin-bottom:7px;">
+              SPASI
             </a>
           </h1>
           <div class="navbar-nav flex-row order-md-last">
@@ -206,7 +208,7 @@
                     <a class="dropdown-item" href="<?= base_url('transaksi_masuk') ?>">
                       Transaksi Masuk
                     </a>
-                    <a class="dropdown-item" href="<?= base_url('transaksi_proses') ?>">
+                    <a class="dropdown-item" href="<?= base_url('transaksi_masuk/transaksi_proses') ?>">
                       Transaksi Proses
                     </a>
                     <a class="dropdown-item" href="<?= base_url('transaksi_keluar') ?>">

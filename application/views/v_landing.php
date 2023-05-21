@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Agency - Start Bootstrap Theme</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/landing/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/clothes-basket.svg" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->

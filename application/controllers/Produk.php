@@ -37,11 +37,40 @@ class Produk extends CI_Controller {
 	public function vproduk()
 	{
 		$data['produk'] = $this->M_produk->show_data()->result();
-		// $data['produk'] = $this->M_produk->get_data('tb_produk')->result();
 		$title['title'] = "Produk - SPASI";
 		$this->load->view('templates/header', $title);
 		$this->load->view('produk/v_produk_2', $data);
 		$this->load->view('templates/footer');
+	}
+
+	public function tambah_produk()
+	{
+		$title['title'] = "Tambah Produk - SPASI";
+
+		$this->load->view('templates/header', $title);
+		$this->load->view('produk/v_tambah_produk');
+		$this->load->view('templates/footer');
+	}
+
+	public function proses_tambah()
+	{
+		$tanggal_ditambahkan = $this->input->post('tanggal_ditambahkan');
+		$harga_produk 		= $this->input->post('harga_produk');
+		$deskripsi_produk 	= $this->input->post('deskripsi_produk');
+		$stok 				= $this->input->post('stok');
+		$id_sasirangan		= $this->input->post('id_sasirangan');
+
+		$data = array(
+			'tanggal_ditambahkan'	=> date('Y-m-d H:i:s'),
+			'harga_produk' 		=> $harga_produk,
+			'deskripsi_produk'	=> $deskripsi_produk,
+			'stok' 				=> $stok,
+			'id_sasirangan'		=> $id_sasirangan
+        );
+        
+		$this->db->insert('tb_produk', $data);
+        redirect('produk/vproduk');
+
 	}
 
 	public function detail_produk()
