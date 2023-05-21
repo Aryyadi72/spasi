@@ -70,8 +70,45 @@ class Produk extends CI_Controller {
         
 		$this->db->insert('tb_produk', $data);
         redirect('produk/vproduk');
-
 	}
+
+	public function updateProduk($id)
+	{
+		$title['title'] 	= "Ubah Produk - SPASI";
+		$data['produk'] = $this->M_produk->update_data($id);
+
+		$this->load->view('templates/header', $title);
+		$this->load->view('produk/v_ubah_produk', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function proses_ubah($id)
+	{
+		$tanggal_ditambahkan = $this->input->post('tanggal_ditambahkan');
+		$harga_produk 		= $this->input->post('harga_produk');
+		$deskripsi_produk 	= $this->input->post('deskripsi_produk');
+		$stok 				= $this->input->post('stok');
+		$id_sasirangan		= $this->input->post('id_sasirangan');
+
+		$data = array(
+			'tanggal_ditambahkan'	=> date('Y-m-d H:i:s'),
+			'harga_produk' 		=> $harga_produk,
+			'deskripsi_produk'	=> $deskripsi_produk,
+			'stok' 				=> $stok,
+			'id_sasirangan'		=> $id_sasirangan
+        );
+        
+		$this->db->where('id_produk', $id);
+		$this->db->update('tb_produk', $data);
+        redirect('produk/vproduk');
+	}
+
+	public function deleteProduk($id_produk)
+    {
+		$this->M_produk->delete_data($id_produk);
+        // $this->session->set_flashdata('sukses', 'Data Dengan ID ' . $id_user . ' berhasil dihapus.');
+        redirect(base_url('produk/vproduk'));
+    }
 
 	public function detail_produk()
 	{
