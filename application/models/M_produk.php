@@ -20,5 +20,11 @@
         {
             return $this->db->get_where('tb_produk', ['id_produk' => $id])->row_array();
         }
+
+        public function get_data()
+        {
+            $query = $this->db->get('tb_sasirangan');
+            return $query->result();
+        }
     } 
 ?>

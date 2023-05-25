@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 21, 2023 at 10:03 PM
+-- Generation Time: May 24, 2023 at 12:16 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -36,7 +36,7 @@ CREATE TABLE `tb_detail_transaksi` (
   `id_transaksi_masuk` int NOT NULL,
   `id_transaksi_keluar` int NOT NULL,
   `id_produk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE `tb_detail_transaksi` (
 CREATE TABLE `tb_level` (
   `id_level` int NOT NULL,
   `level` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_level`
@@ -73,7 +73,7 @@ CREATE TABLE `tb_pelanggan` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `id_level` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_pelanggan`
@@ -99,7 +99,7 @@ CREATE TABLE `tb_pengelola` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `id_level` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_pengelola`
@@ -122,14 +122,14 @@ CREATE TABLE `tb_produk` (
   `stok` int NOT NULL,
   `tanggal_ditambahkan` date NOT NULL,
   `id_sasirangan` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_produk`
 --
 
 INSERT INTO `tb_produk` (`id_produk`, `harga_produk`, `deskripsi_produk`, `stok`, `tanggal_ditambahkan`, `id_sasirangan`) VALUES
-(5, '20000', 'Kain Sasirangan', 20, '2023-05-20', 2);
+(5, '30000', 'Kain Sasirangan', 20, '2023-05-21', 2);
 
 -- --------------------------------------------------------
 
@@ -142,7 +142,7 @@ CREATE TABLE `tb_sasirangan` (
   `nama_sasirangan` varchar(100) NOT NULL,
   `jenis_sasirangan` varchar(100) NOT NULL,
   `foto_sasirangan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tb_sasirangan`
@@ -163,7 +163,7 @@ CREATE TABLE `tb_transaksi_batal` (
   `tanggal_transaksi_batal` date NOT NULL,
   `id_pengelola` int NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,7 @@ CREATE TABLE `tb_transaksi_keluar` (
   `id_transaksi_keluar` int NOT NULL,
   `tanggal_transaksi_keluar` date NOT NULL,
   `id_transaksi_proses` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -191,7 +191,7 @@ CREATE TABLE `tb_transaksi_masuk` (
   `keterangan` varchar(255) NOT NULL,
   `id_pelanggan` int NOT NULL,
   `id_produk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -204,7 +204,7 @@ CREATE TABLE `tb_transaksi_proses` (
   `tanggal_transaksi_proses` date NOT NULL,
   `id_pengelola` int NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -218,7 +218,7 @@ CREATE TABLE `tb_ulasan` (
   `deskripsi` varchar(255) NOT NULL,
   `id_pelanggan` int NOT NULL,
   `id_produk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -337,7 +337,7 @@ ALTER TABLE `tb_pengelola`
 -- AUTO_INCREMENT for table `tb_produk`
 --
 ALTER TABLE `tb_produk`
-  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_sasirangan`

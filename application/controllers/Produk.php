@@ -46,9 +46,10 @@ class Produk extends CI_Controller {
 	public function tambah_produk()
 	{
 		$title['title'] = "Tambah Produk - SPASI";
+		$data['produk'] = $this->M_produk->get_data();
 
 		$this->load->view('templates/header', $title);
-		$this->load->view('produk/v_tambah_produk');
+		$this->load->view('produk/v_tambah_produk', $data);
 		$this->load->view('templates/footer');
 	}
 

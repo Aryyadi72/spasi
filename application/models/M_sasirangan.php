@@ -1,5 +1,6 @@
 <?php
     class M_sasirangan extends CI_Model{
+        
         public function show_data()
         {
             return $this->db->query('SELECT * FROM tb_sasirangan');

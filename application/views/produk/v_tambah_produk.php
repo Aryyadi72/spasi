@@ -8,9 +8,14 @@
                 <div class="card-body">
 
                   <div class="mb-3 row">
-                    <label class="col-3 col-form-label required">Nama Sasirangan</label>
+                    <label class="col-3 col-form-label">Nama Sasirangan</label>
                     <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama" name="id_sasirangan">
+                      <select class="form-select" name="id_sasirangan">
+                        <option selected disabled>Pilih Sasirangan</option>
+                        <?php foreach($produk as $p) { ?>
+                        <option value="<?= $p->id_sasirangan; ?>"><?= $p->nama_sasirangan; ?></option>
+                        <?php } ?>
+                      </select>
                     </div>
                   </div>
 
@@ -38,7 +43,6 @@
                 </div>
                 <div class="card-footer text-end">
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <!-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-success">Submit</a> -->
                 </div>
               </form>
             </div>

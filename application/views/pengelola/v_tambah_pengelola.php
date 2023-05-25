@@ -10,7 +10,6 @@
                     <label class="col-3 col-form-label required">Nama</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama" name="nama">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>
 
@@ -18,7 +17,6 @@
                     <label class="col-3 col-form-label required">Alamat</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Alamat" name="alamat">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>
 
@@ -26,15 +24,13 @@
                     <label class="col-3 col-form-label required">Nomor Telepon</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nomor Telepon" name="no_telp">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>
 
                   <div class="mb-3 row">
                     <label class="col-3 col-form-label required">Upload Foto</label>
                     <div class="col">
-                      <input class="form-control" type="file" id="formFile" name="userfile">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
+                      <input class="form-control" type="file" id="formFile" name="userfile" accept="/image/*">
                     </div>
                   </div>
 
@@ -42,7 +38,6 @@
                     <label class="col-3 col-form-label required">Email</label>
                     <div class="col">
                       <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" name="email">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>
 
@@ -50,7 +45,6 @@
                     <label class="col-3 col-form-label required">Username</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Username" name="username">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>
 
@@ -58,7 +52,6 @@
                     <label class="col-3 col-form-label required">Password</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Password" name="password">
-                      <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>
 
@@ -76,7 +69,6 @@
                 </div>
                 <div class="card-footer text-end">
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <!-- <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-success">Submit</a> -->
                 </div>
               </form>
             </div>
