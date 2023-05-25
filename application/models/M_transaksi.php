@@ -46,5 +46,40 @@
             return $query;
         }
 
+        public function tambahTransaksi($data) 
+        {
+            $this->db->insert('tb_transaksi_masuk', $data);
+            $this->kurangiStokProduk($data['id_produk'], $data['jumlah']);
+            return true;
+        }
+    
+        private function kurangiStokProduk($id_produk, $jumlah) 
+        {
+            $this->db->select('stok');
+            $this->db->where('id_produk', $id_produk);
+            $query = $this->db->get('tb_produk');
+            $row = $query->row();
+            
+            $stok_baru = $row->stok - $jumlah;
+            
+            $this->db->where('id_produk', $id_produk);
+            $this->db->update('tb_produk', ['stok' => $stok_baru]);
+        }
+
+        public function tambahTransaksiMasukKeDiproses($data) {
+        
+        // Simpan transaksi masuk ke dalam tabel transaksi diproses
+        $this->db->insert('tb_transaksi_proses', $data);
+        
+        // Hapus data transaksi masuk dari tabel transaksi masuk
+        $this->db->delete('tb_transaksi_masuk', array('id_transaksi_masuk' => $data['id_transaksi_masuk']));
+        
+        // Periksa apakah transaksi berhasil ditambahkan dan data transaksi masuk berhasil dihapus
+        $success = ($this->db->affected_rows() > 0);
+        
+        return $success;
+    }
+
+
     } 
 ?>

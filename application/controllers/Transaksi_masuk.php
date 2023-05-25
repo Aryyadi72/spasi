@@ -30,12 +30,13 @@ class Transaksi_masuk extends CI_Controller {
 		$id_transaksi_masuk 		= $this->input->post('id_transaksi_masuk');
 
 		$data = array(
-			'tanggal_transaksi_proses' 	=>date('Y-m-d H:i:s'),
+			'tanggal_transaksi_proses' 	=> date('Y-m-d H:i:s'),
 			'id_pengelola' 				=> $id_pengelola,
 			'id_transaksi_masuk' 		=> $id_transaksi_masuk,
         );
         
-		$this->db->insert('tb_transaksi_proses', $data);
+		// $this->db->insert('tb_transaksi_proses', $data);
+		$result = $this->M_transaksi->tambahTransaksiMasukKeDiproses($data);
         redirect('transaksi_masuk/transaksi_proses');
 
 	}
