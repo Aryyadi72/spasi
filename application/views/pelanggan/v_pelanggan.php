@@ -47,7 +47,7 @@
                           foreach($pelanggan as $p) {
                         ?>
                         <td class="sort-no"><?= $no++ ?></td>
-                        <td class="sort-name"><?= $p->nama ?></td>
+                        <td class="sort-name"><?= $p->nama_pelanggan ?></td>
                         <td class="sort-city"><?= $p->alamat ?></td>
                         <td class="sort-type"><?= $p->no_telp ?></td>
                         <td><img src='<?= base_url() ?>./assets/upload/pelanggan/<?= $p->foto ?>' style="width:100%;max-width:100px"></td>

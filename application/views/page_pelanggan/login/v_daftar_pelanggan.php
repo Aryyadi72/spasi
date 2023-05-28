@@ -43,7 +43,7 @@
                   <div class="mb-3">
                     <label class="col-3 col-form-label required">Nama</label>
                     <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama" name="nama">
+                      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama" name="nama_pelanggan">
                     </div>
                   </div>
 

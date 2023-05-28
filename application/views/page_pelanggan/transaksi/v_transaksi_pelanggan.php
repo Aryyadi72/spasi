@@ -8,31 +8,14 @@
 
                 <div class="card-body">
 
-                  <div class="mb-3 row">
-                    <label class="col-3">Produk</label>
-                    <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" name="id_produk" value="<?= $data ?>">
-                    </div>
-                  </div>
+                      <input type="hidden" class="form-control" aria-describedby="emailHelp" name="id_produk" value="<?= $data ?>">
 
-                  <div class="mb-3 row">
-                    <label class="col-3">Nama</label>
-                    <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" name="id_pelanggan">
-                    </div>
-                  </div>
+                      <input type="hidden" class="form-control" aria-describedby="emailHelp" name="id_pelanggan" value="<?= $id_pelanggan ?>">
 
                   <div class="mb-3 row">
                     <label class="col-3 col-form-label required">Jumlah</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Jumlah" name="jumlah">
-                    </div>
-                  </div>
-
-                  <div class="mb-3 row">
-                    <label class="col-3">Total Harga</label>
-                    <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" name="total_harga">
                     </div>
                   </div>
 

@@ -3,21 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login_pelanggan extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+    }
+
 	public function index()
 	{
 		$data['title'] = "Login Pelanggan - SPASI";
@@ -46,7 +37,7 @@ class Login_pelanggan extends CI_Controller {
 			
 		$foto 		= $this->upload->data();
         $foto 		= $foto['file_name'];
-		$nama 		= $this->input->post('nama');
+		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
 		$alamat 	= $this->input->post('alamat');
 		$no_telp 	= $this->input->post('no_telp');
 		$username 	= $this->input->post('username');
@@ -54,7 +45,7 @@ class Login_pelanggan extends CI_Controller {
 		$id_level 	= $this->input->post('id_level');
 
 		$data = array(
-			'nama' 		=> ucwords($nama),
+			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
             'alamat' 	=> $alamat,
 			'no_telp' 	=> $no_telp,
 			'foto' 		=> $foto,
@@ -67,5 +58,75 @@ class Login_pelanggan extends CI_Controller {
         redirect('login_pelanggan');
 
 		}
+	}
+
+	public function auth()
+    {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username', 'username', 'required');
+		$this->form_validation->set_rules('password', 'password', 'required');
+    
+    if ($this->form_validation->run() == FALSE) {
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>Username dan Password wajib diisi !</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
+        redirect('login_pelanggan');
+    } else {
+    $username = $this->input->post('username');
+    $password = $this->input->post('password');
+    
+    $cek = $this->M_login_pelanggan->cek_login($username, $password);
+    
+    if (!$cek) {
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Username atau Password salah !</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>');
+        redirect('login_pelanggan');
+    } else {
+        $this->session->set_userdata('id_level', $cek->id_level);
+        $this->session->set_userdata('username', $cek->username);
+		$this->session->set_userdata('id_pelanggan', $cek->id_pelanggan);
+    
+            switch ($cek->id_level) {
+                case 1:
+                    redirect('dashboard');
+                    break;
+                case 2:
+                    redirect('adming/dashboardadmin');
+                    break;
+                case 3:
+                    redirect('dashboard_pelanggan');
+                    break;
+                case 4:
+                    redirect('pembelian/dashboard');
+                    break;
+                default:
+                    // If id_level is not valid, clear session and redirect to login page
+                    $this->session->unset_userdata('id_level');
+                    $this->session->unset_userdata('username');
+					$this->session->unset_userdata('id_pelanggan');
+                    $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Anda tidak memiliki akses ke halaman ini !</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>');
+                    redirect('login_pelanggan');
+                    break;
+            }
+        }
+    }
+    }
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('landing');
 	}
 }

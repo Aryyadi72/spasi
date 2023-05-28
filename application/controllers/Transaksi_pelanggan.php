@@ -5,8 +5,10 @@ class Transaksi_pelanggan extends CI_Controller {
 
 	public function transaksi()
 	{
+		$this->load->library('session');
 		$title['title'] = "Transaksi - SPASI";
 		$data['data'] = $this->input->get('id');
+		$data['id_pelanggan'] = $this->session->userdata('id_pelanggan');
 
 		$this->load->view('page_pelanggan/templates/header', $title);
         $this->load->view('page_pelanggan/templates/navbar');
@@ -18,10 +20,13 @@ class Transaksi_pelanggan extends CI_Controller {
 	{
 		$tanggal_transakasi_masuk = $this->input->post('tanggal_transakasi_masuk');
 		$jumlah 			= $this->input->post('jumlah');
-		$total_harga 		= $this->input->post('total_harga');
 		$keterangan 		= $this->input->post('keterangan');
 		$id_pelanggan 		= $this->input->post('id_pelanggan');
 		$id_produk 			= $this->input->post('id_produk');
+
+		$harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
+		
+		$total_harga = $jumlah * $harga_satuan;
 
 		$data = array(
 			'tanggal_transakasi_masuk' =>date('Y-m-d H:i:s'),

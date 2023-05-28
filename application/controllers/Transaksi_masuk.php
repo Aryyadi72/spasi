@@ -14,9 +14,10 @@ class Transaksi_masuk extends CI_Controller {
 
 	public function tambah_proses()
 	{
+		$this->load->library('session');
 		$title['title'] = "Transaksi - SPASI";
 		$data['data'] = $this->input->get('id');
-		// $data['data'] = $this->input->get('idp');
+		$data['id_pengelola'] = $this->session->userdata('id_pengelola');
 
 		$this->load->view('templates/header', $title);
 		$this->load->view('transaksi_masuk/v_transaksi_lanjut', $data);
@@ -35,8 +36,8 @@ class Transaksi_masuk extends CI_Controller {
 			'id_transaksi_masuk' 		=> $id_transaksi_masuk,
         );
         
-		// $this->db->insert('tb_transaksi_proses', $data);
-		$result = $this->M_transaksi->tambahTransaksiMasukKeDiproses($data);
+		$this->db->insert('tb_transaksi_proses', $data);
+		// $result = $this->M_transaksi->tambahTransaksiMasukKeDiproses($data);
         redirect('transaksi_masuk/transaksi_proses');
 
 	}
@@ -80,8 +81,10 @@ class Transaksi_masuk extends CI_Controller {
 	public function transaksi_keluar()
 	{
 		$title['title'] = "Transaksi Keluar - SPASI";
+		$data['tselesai'] = $this->M_transaksi->show_data_selesai()->result();
+
 		$this->load->view('templates/header', $title);
-		$this->load->view('transaksi_keluar/v_transaksi_keluar');
+		$this->load->view('transaksi_keluar/v_transaksi_keluar', $data);
 		$this->load->view('templates/footer');
 	}
 	

@@ -211,7 +211,7 @@
                     <a class="dropdown-item" href="<?= base_url('transaksi_masuk/transaksi_proses') ?>">
                       Transaksi Proses
                     </a>
-                    <a class="dropdown-item" href="<?= base_url('transaksi_keluar') ?>">
+                    <a class="dropdown-item" href="<?= base_url('transaksi_masuk/transaksi_keluar') ?>">
                       Transaksi Keluar
                     </a>
                     <a class="dropdown-item" href="<?= base_url('detail_transaksi') ?>">

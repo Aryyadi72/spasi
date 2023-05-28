@@ -12,7 +12,7 @@
                   <div class="mb-3 row">
                     <label class="col-3 col-form-label required">Nama</label>
                     <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama" name="nama" value="<?= $pelanggan['nama'] ?>">
+                      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama" name="nama_pelanggan" value="<?= $pelanggan['nama_pelanggan'] ?>">
                       <!-- <small class="form-hint">We'll never share your email with anyone else.</small> -->
                     </div>
                   </div>

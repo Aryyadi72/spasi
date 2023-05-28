@@ -52,7 +52,7 @@ class Pelanggan extends CI_Controller {
 			
 		$foto 		= $this->upload->data();
         $foto 		= $foto['file_name'];
-		$nama 		= $this->input->post('nama');
+		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
 		$alamat 	= $this->input->post('alamat');
 		$no_telp 	= $this->input->post('no_telp');
 		$username 	= $this->input->post('username');
@@ -60,7 +60,7 @@ class Pelanggan extends CI_Controller {
 		$id_level 	= $this->input->post('id_level');
 
 		$data = array(
-			'nama' 		=> ucwords($nama),
+			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
             'alamat' 	=> $alamat,
 			'no_telp' 	=> $no_telp,
 			'foto' 		=> $foto,
@@ -99,7 +99,7 @@ class Pelanggan extends CI_Controller {
 
         if (!$this->upload->do_upload('userfile')) {
 
-		$nama 		= $this->input->post('nama');
+		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
 		$alamat 	= $this->input->post('alamat');
 		$no_telp 	= $this->input->post('no_telp');
 		$username 	= $this->input->post('username');
@@ -107,7 +107,7 @@ class Pelanggan extends CI_Controller {
 		$id_level 	= $this->input->post('id_level');
 
 		$data = array(
-			'nama' 		=> ucwords($nama),
+			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
             'alamat' 	=> $alamat,
 			'no_telp' 	=> $no_telp,
 			'username' 	=> $username,
@@ -123,7 +123,7 @@ class Pelanggan extends CI_Controller {
 			
 		$foto 		= $this->upload->data();
         $foto 		= $foto['file_name'];
-		$nama 		= $this->input->post('nama');
+		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
 		$alamat 	= $this->input->post('alamat');
 		$no_telp 	= $this->input->post('no_telp');
 		$username 	= $this->input->post('username');
@@ -131,7 +131,7 @@ class Pelanggan extends CI_Controller {
 		$id_level 	= $this->input->post('id_level');
 
 		$data = array(
-			'nama' 		=> ucwords($nama),
+			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
             'alamat' 	=> $alamat,
 			'no_telp' 	=> $no_telp,
 			'foto' 		=> $foto,

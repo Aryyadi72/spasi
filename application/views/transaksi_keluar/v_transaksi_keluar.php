@@ -21,24 +21,26 @@
                     <thead>
                       <tr>
                         <th><button class="table-sort" data-sort="sort-No">No</button></th>
-                        <th><button class="table-sort" data-sort="sort-date">Date</button></th>
-                        <th><button class="table-sort" data-sort="sort-total">Total Harga</button></th>
-                        <th><button class="table-sort" data-sort="sort-ket">Keterangan</button></th>
-                        <th><button class="table-sort" data-sort="sort-pelanggan">Pelanggan</button></th>
-                        <th><button class="table-sort" data-sort="sort-produk">Produk</button></th>
-                        <th><button class="table-sort" data-sort="sort-kasir">Kasir</button></th>
+                        <th><button class="table-sort" data-sort="sort-date">Tanggal</button></th>
+                        <th><button class="table-sort" data-sort="sort-total">Pembeli</button></th>
+                        <th><button class="table-sort" data-sort="sort-ket">Kasir</button></th>
+                        <th><button class="table-sort" data-sort="sort-pelanggan">Jumlah</button></th>
+                        <th><button class="table-sort" data-sort="sort-produk">Total Harga</button></th>
+                        <th><button class="table-sort" data-sort="sort-kasir">Produk</button></th>
                       </tr>
                     </thead>
                     <tbody class="table-tbody">
                       <tr>
-                        <td class="sort-no">1</td>
-                        <td class="sort-date" data-date="1628071164">August 05, 2021</td>
-                        <td class="sort-total">Rp.300.000</td>
-                        <td class="sort-ket">Lorem ipsum dolor sit amet consectetur</td>
-                        <td class="sort-pelanggan">Steel Vengeance</td>
-                        <td class="sort-produk">Kain Sasirangan</td>
-                        <td class="sort-kasir">Fury 325</td>
+                        <?php $no=1; foreach($tselesai as $s) { ?>
+                        <td class="sort-no"><?= $no++ ?></td>
+                        <td class="sort-date"><?= $s->tanggal_transaksi_keluar ?></td>
+                        <td class="sort-total"><?= $s->nama_pelanggan ?></td>
+                        <td class="sort-ket"><?= $s->nama ?></td>
+                        <td class="sort-pelanggan"><?= $s->jumlah ?></td>
+                        <td class="sort-produk"><?= $s->total_harga ?></td>
+                        <td class="sort-kasir"><?= $s->nama_sasirangan ?></td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>

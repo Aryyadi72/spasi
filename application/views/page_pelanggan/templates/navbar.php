@@ -103,7 +103,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <a href="<?= base_url('profil_pelanggan') ?>" class="dropdown-item">Settings</a>
-                <a href="<?= base_url('landing') ?>" class="dropdown-item">Logout</a>
+                <a href="<?= base_url('login_pelanggan/logout') ?>" class="dropdown-item">Logout</a>
               </div>
             </div>
           </div>

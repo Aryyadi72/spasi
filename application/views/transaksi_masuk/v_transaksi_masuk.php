@@ -41,7 +41,7 @@
                         <td class="sort-date"><?= $tm->tanggal_transakasi_masuk ?></td>
                         <td class="sort-total"><?= $tm->total_harga ?></td>
                         <td class="sort-ket"><?= $tm->keterangan ?></td>
-                        <td class="sort-pelanggan"><?= $tm->nama ?></td>
+                        <td class="sort-pelanggan"><?= $tm->nama_pelanggan ?></td>
                         <td class="sort-produk"><?= $tm->nama_sasirangan ?></td>
                         <td>
                           <div class="row g-2 align-items-center">

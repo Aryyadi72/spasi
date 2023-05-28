@@ -9,7 +9,7 @@
                   <div class="mb-3 row">
                     <label class="col-3">ID Pengelola</label>
                     <div class="col">
-                      <input type="text" class="form-control" aria-describedby="emailHelp" name="id_pengelola">
+                      <input type="text" class="form-control" aria-describedby="emailHelp" name="id_pengelola" value="<?= $id_pengelola ?>">
                     </div>
                   </div>
 
