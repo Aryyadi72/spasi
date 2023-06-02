@@ -1,4 +1,3 @@
-
 <div class="container" style="padding-top:80px;">
 <div class="col-md-12">
               <form class="card" action="<?php echo base_url('transaksi_pelanggan/proses_tambah'); ?>" method="post" role="form">
@@ -12,6 +11,10 @@
 
                       <input type="hidden" class="form-control" aria-describedby="emailHelp" name="id_pelanggan" value="<?= $id_pelanggan ?>">
 
+                      <input type="hidden" class="form-control" aria-describedby="emailHelp" name="keterangan" value="Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.">
+
+                      <input type="hidden" class="form-control" aria-describedby="emailHelp" name="status" value="Dikirim">
+
                   <div class="mb-3 row">
                     <label class="col-3 col-form-label required">Jumlah</label>
                     <div class="col">
@@ -20,9 +23,24 @@
                   </div>
 
                   <div class="mb-3 row">
-                    <label class="col-3">Keterangan</label>
+                    <label class="col-3 col-form-label">Metode Pembayaran</label>
                     <div class="col">
-                      <textarea type="text" class="form-control" aria-describedby="emailHelp" placeholder="Keterangan" name="keterangan" cols="30" rows="10"></textarea>
+                      <select class="form-select" name="metode_pembayaran">
+                        <option selected disabled>Pilih Metode Pembayaran</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Transfer">Transfer</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label class="col-3 col-form-label">Metode Pengiriman</label>
+                    <div class="col">
+                      <select class="form-select" name="metode_pengiriman">
+                        <option selected disabled>Pilih Metode Pengiriman</option>
+                        <option value="Ambil di Tempat">Ambil di Tempat</option>
+                        <option value="Kirim ke Alamat Tujuan">Kirim ke Alamat Tujuan</option>
+                      </select>
                     </div>
                   </div>
 

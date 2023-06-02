@@ -23,18 +23,24 @@ class Transaksi_pelanggan extends CI_Controller {
 		$keterangan 		= $this->input->post('keterangan');
 		$id_pelanggan 		= $this->input->post('id_pelanggan');
 		$id_produk 			= $this->input->post('id_produk');
+		$metode_pembayaran 	= $this->input->post('metode_pembayaran');
+		$metode_pengiriman 	= $this->input->post('metode_pengiriman');
+		$status 			= $this->input->post('status');
 
 		$harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
 		
 		$total_harga = $jumlah * $harga_satuan;
 
 		$data = array(
-			'tanggal_transakasi_masuk' =>date('Y-m-d H:i:s'),
-			'jumlah' 		=> $jumlah,
-            'total_harga' 	=> $total_harga,
-			'keterangan' 	=> $keterangan,
-			'id_pelanggan' 	=> $id_pelanggan,
-			'id_produk' 	=> $id_produk,
+			'tanggal_transakasi_masuk' 	=> date('Y-m-d H:i:s'),
+			'jumlah' 					=> $jumlah,
+            'total_harga' 				=> $total_harga,
+			'keterangan' 				=> $keterangan,
+			'id_pelanggan' 				=> $id_pelanggan,
+			'id_produk' 				=> $id_produk,
+			'metode_pembayaran' 		=> $metode_pembayaran,
+			'metode_pengiriman' 		=> $metode_pengiriman,
+			'status' 					=> $status,
         );
         
 		$result = $this->M_transaksi->tambahTransaksi($data);

@@ -50,54 +50,127 @@
                       <thead>
                         <tr>
                           <th><button class="table-sort" data-sort="sort-No">No</button></th>
-                          <th><button class="table-sort" data-sort="sort-date">Date</button></th>
+                          <th><button class="table-sort" data-sort="sort-date">Tanggal Pemesanan</button></th>
                           <th><button class="table-sort" data-sort="sort-total">Total Harga</button></th>
                           <th><button class="table-sort" data-sort="sort-ket">Keterangan</button></th>
-                          <th><button class="table-sort" data-sort="sort-pelanggan">Pelanggan</button></th>
-                          <th><button class="table-sort" data-sort="sort-produk">Produk</button></th>
+                          <th><button class="table-sort" data-sort="sort-pelanggan">Jumlah</button></th>
+                          <th><button class="table-sort" data-sort="sort-produk">Metode Pembayaran</button></th>
+                          <th><button class="table-sort" data-sort="sort-produk">Metode Pengiriman</button></th>
+                          <th><button class="table-sort" data-sort="sort-pelanggan">Status</button></th>
                           <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
                         </tr>
                       </thead>
                       <tbody class="table-tbody">
                         <tr>
-                          <td class="sort-no">1</td>
-                          <td class="sort-date" data-date="1628071164">August 04, 2021</td>
-                          <td class="sort-total">Rp.300.000</td>
-                          <td class="sort-ket">Lorem ipsum dolor sit amet consectetur</td>
-                          <td class="sort-pelanggan">Steel Vengeance</td>
-                          <td class="sort-produk">Kain Sasirangan</td>
+                          <?php 
+                            $no=1; 
+                            foreach($transaksi as $tm) {
+                          ?>
+                          <td class="sort-no"><?= $no++ ?></td>
+                          <td class="sort-date" data-date="1628071164"><?= $tm->tanggal_transakasi_masuk ?></td>
+                          <td class="sort-total"><?= $tm->total_harga ?></td>
+                          <td class="sort-ket"><?= $tm->keterangan ?></td>
+                          <td class="sort-pelanggan"><?= $tm->jumlah ?></td>
+                          <td class="sort-produk"><?= $tm->metode_pembayaran ?></td>
+                          <td class="sort-produk"><?= $tm->metode_pengiriman ?></td>
+
+                          <?php 
+                            $status = $tm->status;
+                            $badgeClass = '';
+                              switch ($status) {
+                                  case 'Selesai':
+                                      $badgeClass = 'bg-green';
+                                      break;
+                                  case 'Proses':
+                                      $badgeClass = 'bg-yellow';
+                                      break;
+                                  case 'Dibatalkan':
+                                      $badgeClass = 'bg-red';
+                                      break;
+                                  default:
+                                      $badgeClass = 'bg-blue';
+                                      break;
+                              }
+                          ?>
+
+                          <td style="margin:20px;padding:5px;" class="badge <?= $badgeClass; ?>"><?= $status ?></td>
+
                           <td>
                             <div class="row g-2 align-items-center">
-                            <!-- Button Cetak Hasil Pembayaran -->
-                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                              <a href="#" class="btn btn-red w-100 btn-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pdf" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                  <path d="M10 8v8h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-2z"></path>
-                                  <path d="M3 12h2a2 2 0 1 0 0 -4h-2v8"></path>
-                                  <path d="M17 12h3"></path>
-                                  <path d="M21 8h-4v8"></path>
-                                </svg>
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                  <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" fill="currentColor"></path>
-                                </svg>
-                              </a>
-                            </div>
-                            <!-- Button Rating -->
-                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                              <a href="#" class="btn btn-yellow w-100 btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                  <path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" stroke-width="0" fill="currentColor"></path>
-                                </svg>
-                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                  <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" fill="currentColor"></path>
-                                </svg>
-                              </a>
-                            </div>
-                            </div>
+                              <?php 
+                                  $kirim = $tm->metode_pengiriman;
+                                  $hrefClass = '';
+                                  $clrbClass = '';
+                                  $iconClass = '';
+                                    switch ($kirim) {
+                                        case 'Kirim ke Alamat Tujuan':
+                                            $hrefClass = 'dashboard_pelanggan/lokasi_pengiriman';
+                                            $clrbClass = 'btn btn-green w-100 btn-icon';
+                                            $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                                                            <path d="M12.794 21.322a2 2 0 0 1 -2.207 -.422l-4.244 -4.243a8 8 0 1 1 13.59 -4.616"></path>
+                                                            <path d="M16 19h6"></path>
+                                                            <path d="M19 16v6"></path>
+                                                          </svg>';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                ?>
+
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="margin-right:-8px;">
+                                  <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
+                                    <?= $iconClass; ?>
+                                  </a>
+                                </div>
+
+                              <?php 
+                                  $bayar = $tm->metode_pembayaran;
+                                  $hrefClass = '';
+                                  $clrbClass = '';
+                                  $iconClass = '';
+                                    switch ($bayar) {
+                                        case 'Transfer':
+                                            $hrefClass = 'dashboard_pelanggan/file_struk/?id='. $tm->id_transaksi_masuk;
+                                            $clrbClass = 'btn btn-red w-100 btn-icon';
+                                            $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2"></path>
+                                                            <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5"></path>
+                                                          </svg>';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                ?>
+                                <!-- Button Rating -->
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                                  <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
+
+                                    <?= $iconClass; ?>
+                                    
+                                  </a>
+                                </div>
+
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                                  <a href="#" class="btn btn-green w-100 btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                        <path d="M9 17h6"></path>
+                                        <path d="M9 13h6"></path>
+                                    </svg>
+                                  </a>
+                              </div>
+
+                              </div>
                           </td>
                         </tr>
+                        <?php
+                          }
+                      ?>
                       </tbody>
                     </table>
                   </div>
@@ -110,13 +183,13 @@
       <script>
       document.addEventListener("DOMContentLoaded", function() {
       const list = new List('table-default', {
-      	sortClass: 'table-sort',
-      	listClass: 'table-tbody',
-      	valueNames: [ 'sort-no', 'sort-total', 'sort-ket', 'sort-pelanggan', 'sort-produk',
-      		{ attr: 'data-date', name: 'sort-date' },
-      		{ attr: 'data-progress', name: 'sort-progress' },
-      		'sort-quantity'
-      	]
+      sortClass: 'table-sort',
+      listClass: 'table-tbody',
+      valueNames: [ 'sort-no', 'sort-total', 'sort-ket', 'sort-pelanggan', 'sort-produk',
+      { attr: 'data-date', name: 'sort-date' },
+      { attr: 'data-progress', name: 'sort-progress' },
+      'sort-quantity'
+      ]
       });
       })
     </script>

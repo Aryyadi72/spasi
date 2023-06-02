@@ -24,9 +24,11 @@
                         <th><button class="table-sort" data-sort="sort-qty">Jumlah</button></th>
                         <th><button class="table-sort" data-sort="sort-date">Tanggal Transaksi</button></th>
                         <th><button class="table-sort" data-sort="sort-total">Total Harga</button></th>
-                        <th><button class="table-sort" data-sort="sort-ket">Keterangan</button></th>
+                        <th><button class="table-sort" data-sort="sort-ket">Metode Pembayaran</button></th>
+                        <th><button class="table-sort" data-sort="sort-ket">Metode Pengiriman</button></th>
                         <th><button class="table-sort" data-sort="sort-pelanggan">Pelanggan</button></th>
                         <th><button class="table-sort" data-sort="sort-produk">Produk</button></th>
+                        <th><button class="table-sort" data-sort="sort-produk">Status</button></th>
                         <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
                       </tr>
                     </thead>
@@ -40,22 +42,108 @@
                         <td class="sort-qty"><?= $tm->jumlah ?></td>
                         <td class="sort-date"><?= $tm->tanggal_transakasi_masuk ?></td>
                         <td class="sort-total"><?= $tm->total_harga ?></td>
-                        <td class="sort-ket"><?= $tm->keterangan ?></td>
+                        <td class="sort-ket"><?= $tm->metode_pembayaran ?></td>
+                        <td class="sort-ket"><?= $tm->metode_pengiriman ?></td>
                         <td class="sort-pelanggan"><?= $tm->nama_pelanggan ?></td>
                         <td class="sort-produk"><?= $tm->nama_sasirangan ?></td>
+
+                        <?php 
+                            $status = $tm->status;
+                            $badgeClass = '';
+                              switch ($status) {
+                                  case 'Selesai':
+                                      $badgeClass = 'bg-green';
+                                      break;
+                                  case 'Proses':
+                                      $badgeClass = 'bg-yellow';
+                                      break;
+                                  case 'Dibatalkan':
+                                      $badgeClass = 'bg-red';
+                                      break;
+                                  default:
+                                      $badgeClass = 'bg-blue';
+                                      break;
+                              }
+                          ?>
+
+                        <td style="margin-bottom:5px;margin-top:10px;padding:5px;" class="badge <?= $badgeClass; ?>"><?= $status ?></td>
+                        
                         <td>
                           <div class="row g-2 align-items-center">
-                          <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                            <a href="<?= base_url('transaksi_masuk/tambah_proses?id=' . $tm->id_transaksi_masuk)?>" class="btn btn-yellow w-100 btn-icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-7" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                                <path d="M12 12l-2 3"></path>
-                                <path d="M12 7v5"></path>
-                              </svg>
-                            </a>
+
+                          <!-- Lokasi -->
+                          <?php 
+                                  $kirim = $tm->metode_pengiriman;
+                                  $hrefClass = '';
+                                  $clrbClass = '';
+                                  $iconClass = '';
+                                    switch ($kirim) {
+                                        case 'Kirim ke Alamat Tujuan':
+                                            $hrefClass = 'transaksi_masuk/lokasibyid/'.$tm->id_transaksi_masuk;
+                                            $clrbClass = 'btn btn-green w-100 btn-icon';
+                                            $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+                                                            <path d="M12.794 21.322a2 2 0 0 1 -2.207 -.422l-4.244 -4.243a8 8 0 1 1 13.59 -4.616"></path>
+                                                            <path d="M16 19h6"></path>
+                                                            <path d="M19 16v6"></path>
+                                                          </svg>';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                            ?>
+
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="margin-right:-8px;">
+                                  <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
+                                    <?= $iconClass; ?>
+                                  </a>
+                                </div>
+                          <!-- Lokasi -->
+
+                          <!-- Struk -->
+                          <?php 
+                                  $bayar = $tm->metode_pembayaran;
+                                  $hrefClass = '';
+                                  $clrbClass = '';
+                                  $iconClass = '';
+                                    switch ($bayar) {
+                                        case 'Transfer':
+                                            $hrefClass = 'transaksi_masuk/strukbyid/'.$tm->id_transaksi_masuk;
+                                            $clrbClass = 'btn btn-red w-100 btn-icon';
+                                            $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2"></path>
+                                                            <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5"></path>
+                                                          </svg>';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                          ?>
+                                <!-- Button Rating -->
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                                  <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
+
+                                    <?= $iconClass; ?>
+                                    
+                                  </a>
+                                </div>
+                          <!-- Struk -->
+
+                          <!-- Detail -->
+                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                              <a href="<?= base_url('transaksi_masuk/ubah_transaksi_masuk/' . $tm->id_transaksi_masuk)?>" class="btn btn-yellow w-100 btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-7" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                  <path d="M12 12l-2 3"></path>
+                                  <path d="M12 7v5"></path>
+                                </svg>
+                              </a>
+                            </div>
                           </div>
-                          </div>
+                          <!-- Detail -->
                         </td>
                       </tr>
                       <?php

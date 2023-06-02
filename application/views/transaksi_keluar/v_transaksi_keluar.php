@@ -21,24 +21,20 @@
                     <thead>
                       <tr>
                         <th><button class="table-sort" data-sort="sort-No">No</button></th>
-                        <th><button class="table-sort" data-sort="sort-date">Tanggal</button></th>
-                        <th><button class="table-sort" data-sort="sort-total">Pembeli</button></th>
-                        <th><button class="table-sort" data-sort="sort-ket">Kasir</button></th>
+                        <th><button class="table-sort" data-sort="sort-date">Tanggal Transaksi Diproses</button></th>
+                        <th><button class="table-sort" data-sort="sort-total">Tanggal Transaksi Selesai</button></th>
+                        <!-- <th><button class="table-sort" data-sort="sort-ket">Kasir</button></th>
                         <th><button class="table-sort" data-sort="sort-pelanggan">Jumlah</button></th>
                         <th><button class="table-sort" data-sort="sort-produk">Total Harga</button></th>
-                        <th><button class="table-sort" data-sort="sort-kasir">Produk</button></th>
+                        <th><button class="table-sort" data-sort="sort-kasir">Produk</button></th> -->
                       </tr>
                     </thead>
                     <tbody class="table-tbody">
                       <tr>
                         <?php $no=1; foreach($tselesai as $s) { ?>
                         <td class="sort-no"><?= $no++ ?></td>
+                        <td class="sort-total"><?= $s->tanggal_transaksi_proses ?></td>
                         <td class="sort-date"><?= $s->tanggal_transaksi_keluar ?></td>
-                        <td class="sort-total"><?= $s->nama_pelanggan ?></td>
-                        <td class="sort-ket"><?= $s->nama ?></td>
-                        <td class="sort-pelanggan"><?= $s->jumlah ?></td>
-                        <td class="sort-produk"><?= $s->total_harga ?></td>
-                        <td class="sort-kasir"><?= $s->nama_sasirangan ?></td>
                       </tr>
                       <?php } ?>
                     </tbody>
