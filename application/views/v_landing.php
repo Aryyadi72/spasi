@@ -20,7 +20,10 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="<?= base_url()?>assets/landing/assets/img/navbar-logo.svg" alt="..." /></a>
+                <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                        <img src="<?= base_url()?>assets/img/clothes-basket.svg" alt="Tabler" class="navbar-brand-image" style="margin-bottom:7px;">
+                        SPASI
+                </h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -38,9 +41,9 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="<?= base_url('login_pelanggan')?>">Login</a>
+                <div class="masthead-subheading">Welcome To SPASI!</div>
+                <div class="masthead-subheading">Sistem Informasi Pendataan & Penjualan Kain Sasirangan</div>
+                <a class="btn btn-dark btn-xl text-uppercase" href="<?= base_url('login_pelanggan')?>">Login</a>
             </div>
         </header>
         <!-- Portfolio Grid-->
