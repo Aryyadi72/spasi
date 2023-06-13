@@ -21,8 +21,25 @@ class Login_pelanggan extends CI_Controller {
 		$this->load->view('page_pelanggan/login/v_daftar_pelanggan', $data);
 	}
 
+    // public function _rules()
+	// {
+	// 	$this->form_validation->set_rules('id_pelanggan','nama_pelanggan','alamat','no_telp','foto','username','password','id_level','userfile','File','required');
+	
+	// }
+
+    public function _rules()
+    {
+        $this->form_validation->set_rules(
+            'no_telp',
+            'Nomor Telepon',
+            'required|is_unique[tb_pelanggan.no_telp]'
+        );
+    }
+
 	public function proses_tambah_pelanggan()
 	{
+        $this->_rules();
+
 		$config['upload_path']          = './assets/upload/pelanggan';
         $config['allowed_types']        = 'gif|jpg|png|PNG';
         $config['max_size']             = 10000;
@@ -31,27 +48,27 @@ class Login_pelanggan extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('userfile')) {
+        if (!$this->form_validation->run() || !$this->upload->do_upload('userfile')) {
             echo "Gagal Tambah";
         } else {
 			
-		$foto 		= $this->upload->data();
-        $foto 		= $foto['file_name'];
-		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
-		$alamat 	= $this->input->post('alamat');
-		$no_telp 	= $this->input->post('no_telp');
-		$username 	= $this->input->post('username');
-		$password 	= $this->input->post('password');
-		$id_level 	= $this->input->post('id_level');
+		$foto 		    = $this->upload->data();
+        $foto 		    = $foto['file_name'];
+		$nama_pelanggan = $this->input->post('nama_pelanggan');
+		$alamat 	    = $this->input->post('alamat');
+		$no_telp 	    = $this->input->post('no_telp');
+		$username 	    = $this->input->post('username');
+		$password 	    = $this->input->post('password');
+		$id_level 	    = $this->input->post('id_level');
 
 		$data = array(
-			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
-            'alamat' 	=> $alamat,
-			'no_telp' 	=> $no_telp,
-			'foto' 		=> $foto,
-			'username' 	=> $username,
-			'password' 	=> md5($password),
-			'id_level' 	=> $id_level,
+			'nama_pelanggan' 	=> ucwords($nama_pelanggan),
+            'alamat' 	        => $alamat,
+			'no_telp' 	        => $no_telp,
+			'foto' 		        => $foto,
+			'username' 	        => $username,
+			'password' 	        => md5($password),
+			'id_level' 	        => $id_level,
         );
         
 		$this->db->insert('tb_pelanggan', $data);

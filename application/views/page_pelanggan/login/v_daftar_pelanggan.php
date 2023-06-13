@@ -55,7 +55,7 @@
                   </div>
 
                   <div class="mb-3">
-                    <label class="col-4 col-form-label required">Nomor Telepon</label>
+                    <label for="Nomor Telepon" class="col-4 col-form-label required">Nomor Telepon</label>
                     <div class="col">
                       <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nomor Telepon" name="no_telp">
                     </div>
@@ -90,8 +90,8 @@
                     </div>
                   </div>
 
-                  <div class="mb-3">
-                    <label class="col-3 col-form-label">Level</label>
+                  <div class="mb-3" hidden>
+                    <!-- <label class="col-3 col-form-label">Level</label> -->
                     <div class="col">
                       <select class="form-select" name="id_level">
                         <!-- <option selected disabled>Pilih Level</option> -->

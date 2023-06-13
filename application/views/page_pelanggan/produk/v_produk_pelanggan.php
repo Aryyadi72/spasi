@@ -48,6 +48,18 @@
                           </svg>
                         </a>
                       </div>
+                      <div class="" style="margin-left:5px;">
+                        <?php echo anchor('produk_pelanggan/tambah_keranjang/'. $p->id_produk, '<div class="btn btn btn-green w-100 btn-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            <path d="M17 17h-11v-14h-2"></path>
+                            <path d="M6 5l6 .429m7.138 6.573l-.143 1h-13"></path>
+                            <path d="M15 6h6m-3 -3v6"></path>
+                          </svg>
+                        </div>') ?>
+                      </div>
                       <div style="margin-left:15px;">
                         <div><?= $p->nama_sasirangan ?></div>
                         <div class="text-muted"><?= $p->harga_produk ?></div>
@@ -78,28 +90,34 @@
     <div class="modal modal-blur fade" id="modal-simple" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title">Beli Produk</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+
           <div class="modal-body">
+
             <div class="mb-3">
               <label class="form-label">Jumlah</label>
-              <input type="text" class="form-control" name="example-text-input" placeholder="Masukkan Jumlah">
+              <input type="number" class="form-control" name="example-text-input" placeholder="Masukkan Jumlah" name="jumlah">
             </div>
-            <div class="mb-3">
-              <label class="form-label">Total Harga</label>
-              <input type="text" class="form-control" name="example-disabled-input" placeholder="Disabled..." value="Total Harga" disabled>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Keterangan</label>
-              <textarea class="form-control" rows="5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis magnam perspiciatis suscipit nam non, voluptate a. Et, ex possimus libero molestiae, suscipit ducimus atque minus distinctio, natus cum ab nisi?</textarea>
-            </div>
+
+            <input type="hidden" class="form-control" aria-describedby="emailHelp" name="id_produk" value="<?= $data ?>">
+
+            <input type="hidden" class="form-control" aria-describedby="emailHelp" name="id_pelanggan" value="<?= $id_pelanggan ?>">
+
+            <input type="hidden" class="form-control" aria-describedby="emailHelp" name="keterangan" value="Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.">
+
+            <input type="hidden" class="form-control" aria-describedby="emailHelp" name="status" value="Dikirim">
+
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-green" data-bs-dismiss="modal">Buat Transaksi</button>
+            <!-- <button type="button" class="btn btn-green" data-bs-dismiss="modal">Buat Transaksi</button> -->
           </div>
+
         </div>
       </div>
     </div>

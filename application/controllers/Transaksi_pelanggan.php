@@ -18,18 +18,19 @@ class Transaksi_pelanggan extends CI_Controller {
 
 	public function proses_tambah()
 	{
-		$tanggal_transakasi_masuk = $this->input->post('tanggal_transakasi_masuk');
-		$jumlah 			= $this->input->post('jumlah');
-		$keterangan 		= $this->input->post('keterangan');
-		$id_pelanggan 		= $this->input->post('id_pelanggan');
-		$id_produk 			= $this->input->post('id_produk');
-		$metode_pembayaran 	= $this->input->post('metode_pembayaran');
-		$metode_pengiriman 	= $this->input->post('metode_pengiriman');
-		$status 			= $this->input->post('status');
+		$tanggal_transakasi_masuk 	= $this->input->post('tanggal_transakasi_masuk');
+		$jumlah 					= $this->input->post('jumlah');
+		$total_harga 				= $this->input->post('total_harga');
+		$keterangan 				= $this->input->post('keterangan');
+		$id_pelanggan 				= $this->input->post('id_pelanggan');
+		$id_produk 					= $this->input->post('id_produk');
+		$metode_pembayaran 			= $this->input->post('metode_pembayaran');
+		$metode_pengiriman 			= $this->input->post('metode_pengiriman');
+		$status 					= $this->input->post('status');
 
-		$harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
+		// $harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
 		
-		$total_harga = $jumlah * $harga_satuan;
+		// $total_harga = $jumlah * $harga_satuan;
 
 		$data = array(
 			'tanggal_transakasi_masuk' 	=> date('Y-m-d H:i:s'),
