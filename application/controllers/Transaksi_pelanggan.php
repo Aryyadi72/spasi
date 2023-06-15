@@ -28,9 +28,9 @@ class Transaksi_pelanggan extends CI_Controller {
 		$metode_pengiriman 			= $this->input->post('metode_pengiriman');
 		$status 					= $this->input->post('status');
 
-		// $harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
+		$harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
 		
-		// $total_harga = $jumlah * $harga_satuan;
+		$total_harga = $jumlah * $harga_satuan;
 
 		$data = array(
 			'tanggal_transakasi_masuk' 	=> date('Y-m-d H:i:s'),
