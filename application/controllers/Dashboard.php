@@ -21,8 +21,15 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = "Dashboard - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$dataCount['total'] = $this->M_sasirangan->getTotalSasirangan();
+		$dataCount['totalproduk'] = $this->M_sasirangan->getTotalProduk();
+		$dataCount['totalmasuk'] = $this->M_sasirangan->getTotalMasuk();
+		$dataCount['totalselesai'] = $this->M_sasirangan->getTotalSelesai();
 		$this->load->view('templates/header', $data);
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $dataCount);
 		$this->load->view('templates/footer');
 	}
 }

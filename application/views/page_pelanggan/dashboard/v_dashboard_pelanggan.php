@@ -68,7 +68,7 @@
                           ?>
                           <td class="sort-no"><?= $no++ ?></td>
                           <td class="sort-date" data-date="1628071164"><?= $tm->tanggal_transakasi_masuk ?></td>
-                          <td class="sort-total"><?= $tm->total_harga ?></td>
+                          <td class="sort-total"><?= 'Rp ' . number_format($tm->total_harga, 0, ',', '.'); ?></td>
                           <td class="sort-ket"><?= $tm->keterangan ?></td>
                           <td class="sort-pelanggan"><?= $tm->jumlah ?></td>
                           <td class="sort-produk"><?= $tm->metode_pembayaran ?></td>
@@ -105,7 +105,7 @@
                                     switch ($kirim) {
                                         case 'Kirim ke Alamat Tujuan':
                                             $hrefClass = 'dashboard_pelanggan/lokasi_pengiriman';
-                                            $clrbClass = 'btn btn-green w-100 btn-icon';
+                                            $clrbClass = 'btn btn-green w-100 btn-icon btn-sm';
                                             $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
@@ -119,7 +119,7 @@
                                     }
                                 ?>
 
-                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="margin-right:-8px;">
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="">
                                   <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
                                     <?= $iconClass; ?>
                                   </a>
@@ -133,7 +133,7 @@
                                     switch ($bayar) {
                                         case 'Transfer':
                                             $hrefClass = 'dashboard_pelanggan/file_struk/?id='. $tm->id_transaksi_masuk;
-                                            $clrbClass = 'btn btn-red w-100 btn-icon';
+                                            $clrbClass = 'btn btn-red w-100 btn-icon btn-sm';
                                             $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2"></path>
@@ -154,7 +154,7 @@
                                 </div>
 
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                                  <a href="#" class="btn btn-green w-100 btn-icon">
+                                  <a href="<?= base_url('dashboard_pelanggan/invoice/'.$tm->id_transaksi_masuk) ?>" class="btn btn-green w-100 btn-icon btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>

@@ -22,8 +22,11 @@ class Pengelola extends CI_Controller {
 	{
 		$data['pengelola'] = $this->M_pengelola->show_data()->result();
 		$data['pengelola'] = $this->M_pengelola->get_data('tb_pengelola')->result();
-		$title['title'] = "Pengelola - SPASI";
-		$this->load->view('templates/header', $title);
+		$data['title'] = "Pengelola - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$this->load->view('templates/header', $data);
 		$this->load->view('pengelola/v_pengelola', $data);
 		$this->load->view('templates/footer');
 	}
@@ -31,6 +34,9 @@ class Pengelola extends CI_Controller {
 	public function addPengelola()
 	{
 		$data['title'] = "Tambah Pengelola - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$this->load->view('templates/header', $data);
 		$this->load->view('pengelola/v_tambah_pengelola');
 		$this->load->view('templates/footer');
@@ -79,10 +85,13 @@ class Pengelola extends CI_Controller {
 
 	public function updatePengelola($id)
 	{
-		$title['title'] = "Ubah Pengelola - SPASI";
+		$data['title'] = "Ubah Pengelola - SPASI";
 		$data['pengelola'] = $this->M_pengelola->update_data($id);
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('pengelola/v_ubah_pengelola', $data);
 		$this->load->view('templates/footer');
 	}

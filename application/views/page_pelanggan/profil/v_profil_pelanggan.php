@@ -21,7 +21,7 @@
                     <h2 class="mb-4">My Account</h2>
                     <h3 class="card-title">Profile Details</h3>
                     <div class="row align-items-center">
-                      <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(<?= base_url() ?>./assets/static/avatars/000m.jpg)"></span>
+                      <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(<?= base_url() ?>assets/upload/pelanggan/<?= $profil['foto'] ?>)"></span>
                       </div>
                       <div class="col-auto"><a href="#" class="btn">
                           Change avatar
@@ -33,25 +33,24 @@
                     <h3 class="card-title mt-4">Business Profile</h3>
                     <div class="row g-3">
                       <div class="col-md">
-                        <div class="form-label">Business Name</div>
-                        <input type="text" class="form-control" value="Tabler">
+                        <div class="form-label">Nama</div>
+                        <input type="text" class="form-control" value="<?= $profil['nama_pelanggan'] ?>">
                       </div>
                       <div class="col-md">
-                        <div class="form-label">Business ID</div>
-                        <input type="text" class="form-control" value="560afc32">
+                        <div class="form-label">Alamat</div>
+                        <input type="text" class="form-control" value="<?= $profil['alamat'] ?>">
                       </div>
                       <div class="col-md">
-                        <div class="form-label">Location</div>
-                        <input type="text" class="form-control"
-			       value="Peimei, China">
+                        <div class="form-label">Nomor Telepon</div>
+                        <input type="text" class="form-control" value="<?= $profil['no_telp'] ?>">
                       </div>
                     </div>
-                    <h3 class="card-title mt-4">Email</h3>
+                    <h3 class="card-title mt-4">Username</h3>
                     <p class="card-subtitle">This contact will be shown to others publicly, so choose it carefully.</p>
                     <div>
                       <div class="row g-2">
                         <div class="col-auto">
-                          <input type="text" class="form-control w-auto" value="paweluna@howstuffworks.com">
+                          <input type="text" class="form-control w-auto" value="<?= $profil['username'] ?>">
                         </div>
                         <div class="col-auto"><a href="#" class="btn">
                             Change

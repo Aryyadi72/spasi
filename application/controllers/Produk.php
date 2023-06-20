@@ -20,8 +20,11 @@ class Produk extends CI_Controller {
 	 */
 	public function index()
 	{
-		$title['title'] = "Produk - SPASI";
-		$this->load->view('templates/header', $title);
+		$data['title'] = "Produk - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$this->load->view('templates/header', $data);
 		$this->load->view('produk/v_detail', $data);
 		$this->load->view('templates/footer');
 	}
@@ -29,6 +32,9 @@ class Produk extends CI_Controller {
     public function produk()
 	{
 		$data['title'] = "Produk - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$this->load->view('templates/header', $data);
 		$this->load->view('produk/v_produk');
 		$this->load->view('templates/footer');
@@ -37,18 +43,24 @@ class Produk extends CI_Controller {
 	public function vproduk()
 	{
 		$data['produk'] = $this->M_produk->show_data()->result();
-		$title['title'] = "Produk - SPASI";
-		$this->load->view('templates/header', $title);
+		$data['title'] = "Produk - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$this->load->view('templates/header', $data);
 		$this->load->view('produk/v_produk_2', $data);
 		$this->load->view('templates/footer');
 	}
 
 	public function tambah_produk()
 	{
-		$title['title'] = "Tambah Produk - SPASI";
+		$data['title'] = "Tambah Produk - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$data['produk'] = $this->M_produk->get_data();
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('produk/v_tambah_produk', $data);
 		$this->load->view('templates/footer');
 	}
@@ -75,10 +87,13 @@ class Produk extends CI_Controller {
 
 	public function updateProduk($id)
 	{
-		$title['title'] 	= "Ubah Produk - SPASI";
+		$data['title'] 	= "Ubah Produk - SPASI";
 		$data['produk'] = $this->M_produk->update_data($id);
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('produk/v_ubah_produk', $data);
 		$this->load->view('templates/footer');
 	}
@@ -113,6 +128,9 @@ class Produk extends CI_Controller {
 
 	public function detail_produk()
 	{
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$data['title'] = "Detail Produk - SPASI";
 		$this->load->view('templates/header', $data);
 		$this->load->view('produk/v_detail_produk');

@@ -30,5 +30,29 @@
             return $query;
         }
 
+        public function getTotalSasirangan()
+        {
+            $query = $this->db->get('tb_sasirangan');
+            return $query->num_rows();
+        }
+
+        public function getTotalProduk()
+        {
+            $query = $this->db->get('tb_produk');
+            return $query->num_rows();
+        }
+
+        public function getTotalMasuk()
+        {
+            $query = $this->db->get('tb_transaksi_masuk');
+            return $query->num_rows();
+        }
+
+        public function getTotalSelesai()
+        {
+            $query = $this->db->get('tb_transaksi_keluar');
+            return $query->num_rows();
+        }
+
     } 
 ?>

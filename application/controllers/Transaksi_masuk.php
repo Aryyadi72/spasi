@@ -5,9 +5,12 @@ class Transaksi_masuk extends CI_Controller {
 
 	public function index()
 	{
-		$title['title'] = "Transaski Masuk - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$data['title'] = "Transaski Masuk - SPASI";
 		$data['transaksi'] = $this->M_transaksi->show_data('tb_transaksi_masuk')->result();
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_masuk/v_transaksi_masuk', $data);
 		$this->load->view('templates/footer');
 	}
@@ -15,22 +18,28 @@ class Transaksi_masuk extends CI_Controller {
 	public function tambah_proses()
 	{
 		$this->load->library('session');
-		$title['title'] = "Transaksi - SPASI";
+		$data['title'] = "Transaksi - SPASI";
 		$data['data'] = $this->input->get('id');
 		$data['id_pengelola'] = $this->session->userdata('id_pengelola');
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_masuk/v_transaksi_lanjut', $data);
 		$this->load->view('templates/footer');
 	}
 
 	public function ubah_transaksi_masuk($id)
 	{
-		$title['title'] = "Transaksi - SPASI";
+		$data['title'] = "Transaksi - SPASI";
 		$data['transaksi'] = $this->M_transaksi->update_transaksi($id);
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		// $data['tambahan'] = $this->M_transaksi->masuk_detail_a()->result();
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_masuk/v_transaksi_lanjut', $data);
 		$this->load->view('templates/footer');
 	}
@@ -141,21 +150,27 @@ class Transaksi_masuk extends CI_Controller {
 
 	public function transaksi_proses()
 	{
-		$title['title'] 		= "Transaski Proses - SPASI";
+		$data['title'] 		= "Transaski Proses - SPASI";
 		$data['transaksi'] 		= $this->M_transaksi->show_data_proses('tb_transaksi_proses')->result();
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_proses/v_transaksi_proses', $data);
 		$this->load->view('templates/footer');
 	}
 
 	public function detail_proses()
 	{
-		$title['title'] 	= "Detail Transaski Proses - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$data['title'] 	= "Detail Transaski Proses - SPASI";
 		$data['data']		= $this->input->get('id');
 		// $data['transaksi'] 		= $this->M_transaksi->show_data_proses('tb_transaksi_proses')->result();
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_proses/v_detail_transaksi_proses', $data);
 		$this->load->view('templates/footer');
 	}
@@ -177,11 +192,14 @@ class Transaksi_masuk extends CI_Controller {
 
 	public function transaksi_keluar()
 	{
-		$title['title'] = "Transaksi Keluar - SPASI";
+		$data['title'] = "Transaksi Keluar - SPASI";
 		// $data['tselesai'] = $this->M_transaksi->show_data_selesai()->result();
 		$data['tselesai'] = $this->db->get('tb_transaksi_keluar')->result();
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_keluar/v_transaksi_keluar', $data);
 		$this->load->view('templates/footer');
 	}
@@ -205,8 +223,11 @@ class Transaksi_masuk extends CI_Controller {
 	
 	public function transaksi_batal()
 	{
-		$title['title'] = "Transaksi Batal - SPASI";
-		$this->load->view('templates/header', $title);
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$data['title'] = "Transaksi Batal - SPASI";
+		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_batal/v_transaksi_batal');
 		$this->load->view('templates/footer');
 	}

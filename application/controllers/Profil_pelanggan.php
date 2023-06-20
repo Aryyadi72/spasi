@@ -20,10 +20,15 @@ class Profil_pelanggan extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data['title'] = "Profile - SPASI";
-		$this->load->view('page_pelanggan/templates/header', $data);
-        $this->load->view('page_pelanggan/templates/navbar');
-        $this->load->view('page_pelanggan/profil/v_profil_pelanggan');
+		$title['title'] = "Profile - SPASI";
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+		$data['profil'] = $this->M_pelanggan->update_data_2($id_pelanggan);
+
+		$this->load->view('page_pelanggan/templates/header', $title);
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
+        $this->load->view('page_pelanggan/profil/v_profil_pelanggan', $data);
         $this->load->view('page_pelanggan/templates/footer');
 	}
 

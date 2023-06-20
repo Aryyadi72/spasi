@@ -131,8 +131,8 @@
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                 <span class="avatar avatar-sm" style="background-image: url(<?= base_url()?>./assets/static/avatars/033f.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>Admin</div>
-                  <div class="mt-1 small text-muted">Admin</div>
+                  <div><?= $username['nama'] ?></div>
+                  <div class="mt-1 small text-muted"><?= $username['username'] ?></div>
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -233,13 +233,15 @@
                       </svg>
                     </span>
                     <span class="nav-link-title">
-                     User
+                      User
                     </span>
                   </a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('pengelola') ?>">
-                      Data Pengelola
-                    </a>
+                    <?php if ($id_level == 1): ?> <!-- Jika id_level = 1 (admin) -->
+                      <a class="dropdown-item" href="<?= base_url('pengelola') ?>">
+                        Data Pengelola
+                      </a>
+                    <?php endif; ?>
                     <a class="dropdown-item" href="<?= base_url('pelanggan') ?>">
                       Data Pelanggan
                     </a>

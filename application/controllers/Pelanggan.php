@@ -22,8 +22,11 @@ class Pelanggan extends CI_Controller {
 	{
 		$data['pelanggan'] = $this->M_pelanggan->show_data()->result();
 		$data['pelanggan'] = $this->M_pelanggan->get_data('tb_pelanggan')->result();
-		$title['title'] = "Pelanggan - SPASI";
-		$this->load->view('templates/header', $title);
+		$data['title'] = "Pelanggan - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
+		$this->load->view('templates/header', $data);
 		$this->load->view('pelanggan/v_pelanggan', $data);
 		$this->load->view('templates/footer');
 	}
@@ -31,6 +34,9 @@ class Pelanggan extends CI_Controller {
 	public function addPelanggan()
 	{
 		$data['title'] = "Tambah Pelanggan - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$this->load->view('templates/header', $data);
 		$this->load->view('pelanggan/v_tambah_pelanggan');
 		$this->load->view('templates/footer');
@@ -77,10 +83,12 @@ class Pelanggan extends CI_Controller {
 
 	public function updatePelanggan($id)
 	{
-		$title['title'] = "Ubah Pelanggan - SPASI";
-		$data['pelanggan'] = $this->M_pelanggan->update_data($id);
+		$data['title'] = "Ubah Pelanggan - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('pelanggan/v_ubah_pelanggan', $data);
 		$this->load->view('templates/footer');
 	}

@@ -21,6 +21,9 @@ class Transaksi_proses extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = "Transaski Proses - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi_proses/v_transaksi_proses');
 		$this->load->view('templates/footer');

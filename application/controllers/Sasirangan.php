@@ -20,16 +20,22 @@ class Sasirangan extends CI_Controller {
 	 */
 	public function index()
 	{
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$data['sasirangan'] = $this->M_sasirangan->show_data()->result();
 		$data['sasirangan'] = $this->M_sasirangan->get_data('tb_sasirangan')->result();
-		$title['title'] = "Data Sasirngan - SPASI";
-		$this->load->view('templates/header', $title);
+		$data['title'] = "Data Sasirngan - SPASI";
+		$this->load->view('templates/header', $data);
 		$this->load->view('sasirangan/v_sasirangan', $data);
 		$this->load->view('templates/footer');
 	}
 
     public function addSasirangan()
 	{
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$data['title'] = "Tambah Sasirangan - SPASI";
 		$this->load->view('templates/header', $data);
 		$this->load->view('sasirangan/v_tambah_sasirangan');
@@ -69,10 +75,13 @@ class Sasirangan extends CI_Controller {
 
 	public function updateSasirangan($id)
 	{
-		$title['title'] 	= "Ubah Sasirangan - SPASI";
+		$data['title'] 	= "Ubah Sasirangan - SPASI";
 		$data['sasirangan'] = $this->M_sasirangan->update_data($id);
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 
-		$this->load->view('templates/header', $title);
+		$this->load->view('templates/header', $data);
 		$this->load->view('sasirangan/v_ubah_sasirangan', $data);
 		$this->load->view('templates/footer');
 	}

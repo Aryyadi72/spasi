@@ -136,6 +136,19 @@
         </div>
       </div>
     </div>
+	<!-- Datatables -->
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#keranjang').DataTable();
+		});
+	</script>
+	<script>
+		$(document).ready(function () {
+			$('#dashpel').DataTable();
+		});
+	</script>
     <!-- Libs JS -->
     <script src="<?= base_url()?>./assets/dist/libs/apexcharts/dist/apexcharts.min.js?1674944402" defer></script>
     <script src="<?= base_url()?>./assets/dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1674944402" defer></script>

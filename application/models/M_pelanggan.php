@@ -24,6 +24,11 @@
             return $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id])->row_array();
         }
 
+        public function update_data_2($id_pelanggan)
+        {
+            return $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        }
+
         public function detail_data($id_pelanggan = NULL){
             $query = $this->db->get_where('tb_pelanggan',array('id_pelanggan'=> $id_pelanggan))->row();
             return $query;

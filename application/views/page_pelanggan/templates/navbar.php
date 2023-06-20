@@ -16,7 +16,7 @@
           <div class="navbar-nav flex-row order-md-last">
             <div class="d-none d-md-flex">
 
-              <a href="<?= base_url('produk_pelanggan/detail_keranjang') ?>" class="nav-link px-0" tabindex="-1">
+              <a href="<?= base_url('keranjang/indexas/'.$username['id_pelanggan']) ?>" class="nav-link px-0" tabindex="-1">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -24,8 +24,7 @@
                     <path d="M17 17h-11v-14h-2"></path>
                     <path d="M6 5l14 1l-1 7h-13"></path>
                   </svg>
-                  <?php $cart_total = $this->session->userdata('cart_total'); ?>
-                  <span class="badge bg-blue"><?php echo $cart_total; ?></span>
+                  <span class="badge bg-blue"><?php echo $total; ?></span>
               </a>
               
               <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
@@ -109,7 +108,7 @@
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                 <span class="avatar avatar-sm" style="background-image: url(<?= base_url()?>./assets/static/avatars/033f.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>Pelanggan</div>
+                  <div><?= $username['username'] ?></div>
                   <div class="mt-1 small text-muted">Pelanggan</div>
                 </div>
               </a>

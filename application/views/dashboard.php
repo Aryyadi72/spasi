@@ -37,7 +37,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="h1 mb-3">75%</div>
+                    <div class="h1 mb-3">85%</div>
                     <div class="d-flex mb-2">
                       <div>Conversion rate</div>
                       <div class="ms-auto">
@@ -155,10 +155,10 @@
                           </div>
                           <div class="col">
                             <div class="font-weight-medium">
-                              132 Sales
+                              <?= $total ?> Jenis Sasirangan
                             </div>
                             <div class="text-muted">
-                              12 waiting payments
+                              
                             </div>
                           </div>
                         </div>
@@ -176,10 +176,10 @@
                           </div>
                           <div class="col">
                             <div class="font-weight-medium">
-                              78 Orders
+                              <?= $totalproduk ?> Produk
                             </div>
                             <div class="text-muted">
-                              32 shipped
+                              
                             </div>
                           </div>
                         </div>
@@ -197,10 +197,10 @@
                           </div>
                           <div class="col">
                             <div class="font-weight-medium">
-                              623 Shares
+                              <?= $totalmasuk ?> Transaksi Masuk
                             </div>
                             <div class="text-muted">
-                              16 today
+                              
                             </div>
                           </div>
                         </div>
@@ -218,10 +218,10 @@
                           </div>
                           <div class="col">
                             <div class="font-weight-medium">
-                              132 Likes
+                              <?= $totalselesai ?> Transaksi Selesai
                             </div>
                             <div class="text-muted">
-                              21 today
+                              
                             </div>
                           </div>
                         </div>

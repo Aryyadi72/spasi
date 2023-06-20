@@ -20,6 +20,9 @@ class Profil_pengelola extends CI_Controller {
 	 */
 	public function index()
 	{
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$data['title'] = "Profile - SPASI";
 		$this->load->view('templates/header', $data);
         $this->load->view('profil/v_profil_pengelola');

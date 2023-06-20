@@ -14,6 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title><?= $title ?></title>
     <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/clothes-basket.svg" />
+    <!-- CSS Datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <!-- CSS files -->
     <link href="<?= base_url()?>./assets/dist/css/tabler.min.css?1674944402" rel="stylesheet"/>
     <link href="<?= base_url()?>./assets/dist/css/tabler-flags.min.css?1674944402" rel="stylesheet"/>

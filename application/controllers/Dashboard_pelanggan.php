@@ -6,9 +6,16 @@ class Dashboard_pelanggan extends CI_Controller {
 	public function index()
 	{
 		$title['title'] = "Dashboard - SPASI";
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+
+		$this->db->where('id_pelanggan', $id_pelanggan);
 		$data['transaksi'] = $this->db->get('tb_transaksi_masuk')->result();
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+
 		$this->load->view('page_pelanggan/templates/header', $title);
-        $this->load->view('page_pelanggan/templates/navbar');
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
         $this->load->view('page_pelanggan/dashboard/v_dashboard_pelanggan', $data);
         $this->load->view('page_pelanggan/templates/footer');
 	}
@@ -17,8 +24,11 @@ class Dashboard_pelanggan extends CI_Controller {
 	{
 		$title['title'] = "Kirim Struk - SPASI";
 		$id_transaksi_masuk['a'] = $this->input->get('id');
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+
 		$this->load->view('page_pelanggan/templates/header', $title);
-        $this->load->view('page_pelanggan/templates/navbar');
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
         $this->load->view('page_pelanggan/file_pembayaran/v_tambah_file_pembayaran', $id_transaksi_masuk);
         $this->load->view('page_pelanggan/templates/footer');
 	}
@@ -56,8 +66,11 @@ class Dashboard_pelanggan extends CI_Controller {
 	{
 		$title['title'] = "Lokasi Pengiriman - SPASI";
 		$id_transaksi_masuk['a'] = $this->input->get('id');
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+
 		$this->load->view('page_pelanggan/templates/header', $title);
-        $this->load->view('page_pelanggan/templates/navbar');
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
         $this->load->view('page_pelanggan/lokasi_pengiriman/v_tambah_lokasi_pengiriman', $id_transaksi_masuk);
         $this->load->view('page_pelanggan/templates/footer');
 	}
@@ -75,6 +88,53 @@ class Dashboard_pelanggan extends CI_Controller {
         );
         
 		$this->db->insert('tb_titik_pengiriman', $data);
+        redirect('dashboard_pelanggan');
+	}
+
+	public function invoice($id)
+	{
+		$title['title'] = "Invoice - SPASI";
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+		$data['invoice'] = $this->M_produk->getInvoice($id);
+
+		$this->load->view('page_pelanggan/templates/header', $title);
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
+        $this->load->view('page_pelanggan/dashboard/v_invoice', $data);
+        $this->load->view('page_pelanggan/templates/footer');
+	}
+
+	public function tambah_rating()
+	{
+		$title['title'] = "Tambah Rating - SPASI";
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+		$data['id_produk'] = $this->input->get('id');
+		$data['id_pelanggan'] = $this->session->userdata('id_pelanggan');
+
+		$this->load->view('page_pelanggan/templates/header', $title);
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
+        $this->load->view('page_pelanggan/dashboard/v_tambah_rating', $data);
+        $this->load->view('page_pelanggan/templates/footer');
+	}
+
+	public function proses_tambah_ulasan()
+	{
+		$rating 		= $this->input->post('rating');
+		$deskripsi 		= $this->input->post('deskripsi');
+		$id_pelanggan 	= $this->input->post('id_pelanggan');
+		$id_produk		= $this->input->post('id_produk');
+
+		$data = array(
+			'rating' 		=> $rating,
+			'deskripsi'		=> $deskripsi,
+			'id_pelanggan' 	=> $id_pelanggan,
+			'id_produk'		=> $id_produk
+        );
+        
+		$this->db->insert('tb_ulasan', $data);
         redirect('dashboard_pelanggan');
 	}
 

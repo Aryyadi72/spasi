@@ -5,18 +5,18 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  Gallery
+                  Produk Sasirangan
                 </h2>
-                <div class="text-muted mt-1">1-12 of 241 photos</div>
+                <div class="text-muted mt-1">Silahkan Pilih Produk Sasirangan yang Diinginkan!!!</div>
               </div>
               <!-- Page title actions -->
               <div class="col-auto ms-auto d-print-none">
                 <div class="d-flex">
                   <div class="me-3">
                     <div class="input-icon">
-                      <input type="text" value="" class="form-control" placeholder="Search…">
+                      <input type="hidden" value="" class="form-control" placeholder="Search…">
                       <span class="input-icon-addon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" hidden><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
                       </span>
                     </div>
                   </div>
@@ -35,7 +35,7 @@
               ?>
               <div class="col-sm-6 col-lg-4">
                 <div class="card card-sm">
-                  <a href="<?= base_url('produk_pelanggan/detail_produk_pelanggan') ?>" class="d-block"><img src='<?= base_url() ?>./assets/upload/<?= $p->foto_sasirangan ?>' style="width:421px;height:350px" class="card-img-top"></a>
+                  <a href="<?= base_url('produk_pelanggan/detail_produk_pelanggan/'. $p->id_produk) ?>" class="d-block"><img src='<?= base_url() ?>./assets/upload/<?= $p->foto_sasirangan ?>' style="width:421px;height:350px" class="card-img-top"></a>
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div class="">
@@ -49,7 +49,7 @@
                         </a>
                       </div>
                       <div class="" style="margin-left:5px;">
-                        <?php echo anchor('produk_pelanggan/tambah_keranjang/'. $p->id_produk, '<div class="btn btn btn-green w-100 btn-icon">
+                        <?php echo anchor('keranjang/tambah_keranjang?id='. $p->id_produk, '<div class="btn btn btn-green w-100 btn-icon">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -62,7 +62,7 @@
                       </div>
                       <div style="margin-left:15px;">
                         <div><?= $p->nama_sasirangan ?></div>
-                        <div class="text-muted"><?= $p->harga_produk ?></div>
+                        <div class="text-muted"><?= 'Rp ' . number_format($p->harga_produk, 0, ',', '.'); ?></div>
                       </div>
                       <div class="ms-auto">
                         <a href="#" class="text-muted">

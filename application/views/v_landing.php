@@ -30,16 +30,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
+        <header class="masthead text-dark">
             <div class="container">
                 <div class="masthead-subheading">Welcome To SPASI!</div>
                 <div class="masthead-subheading">Sistem Informasi Pendataan & Penjualan Kain Sasirangan</div>

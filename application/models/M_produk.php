@@ -10,6 +10,28 @@
             return $query;
         }
 
+        public function show_data_byid($id)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            // $this->db->join('tb_produk', 'tb_produk.id_produk = tb_ulasan.id_produk');
+            $this->db->where('tb_produk.id_produk', $id);
+            $query = $this->db->get()->row_array();
+            return $query;
+        }
+
+        public function getInvoice($id)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_transaksi_masuk', 'tb_produk');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->where('tb_transaksi_masuk.id_transaksi_masuk', $id);
+            $query = $this->db->get()->row_array();
+            return $query;
+        }
+
         public function delete_data($id_produk)
         {
             $this->db->where('id_produk', $id_produk);
@@ -20,6 +42,11 @@
         {
             return $this->db->get_where('tb_produk', ['id_produk' => $id])->row_array();
         }
+
+        // public function getInvoice($id)
+        // {
+        //     return $this->db->get_where('tb_transaksi_masuk', ['id_transaksi_masuk' => $id])->row_array();
+        // }
 
         public function get_data()
         {

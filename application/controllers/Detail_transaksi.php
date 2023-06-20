@@ -21,6 +21,9 @@ class Detail_transaksi extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = "Detail Transaski - SPASI";
+		$id_pengelola = $this->session->userdata('id_pengelola');
+		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+		$data['id_level'] 	= $this->session->userdata('id_level');
 		$this->load->view('templates/header', $data);
 		$this->load->view('detail_transaksi/v_detail_transaksi');
 		$this->load->view('templates/footer');

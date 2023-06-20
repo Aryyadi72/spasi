@@ -10,8 +10,12 @@ class Transaksi_pelanggan extends CI_Controller {
 		$data['data'] = $this->input->get('id');
 		$data['id_pelanggan'] = $this->session->userdata('id_pelanggan');
 
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+
 		$this->load->view('page_pelanggan/templates/header', $title);
-        $this->load->view('page_pelanggan/templates/navbar');
+        $this->load->view('page_pelanggan/templates/navbar', $dataCount);
         $this->load->view('page_pelanggan/transaksi/v_transaksi_pelanggan', $data);
         $this->load->view('page_pelanggan/templates/footer');
 	}
