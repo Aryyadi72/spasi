@@ -1,5 +1,6 @@
 <div class="container" style="margin-top:70px;">
     <div class="row g-2 align-items-center" style="margin-left:1200px;margin-bottom:-45px;">
+        <?php if ($id_level == 1): ?>
         <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
             <a href="<?= base_url('sasirangan/addSasirangan') ?>" class="btn btn-indigo w-100">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -11,6 +12,7 @@
             Tambah
             </a>
         </div>
+        <?php endif; ?>
     </div>
     <h2 style="margin-bottom:-10px;">Data Sasirangan</h2>
     <hr>
@@ -21,7 +23,9 @@
                     <th>Nama</th>
                     <th>Jenis</th>
                     <th>Foto</th>
+                    <?php if ($id_level == 1): ?>
                     <th>Aksi</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +38,7 @@
                     <td><?= $s->nama_sasirangan ?></td>
                     <td><?= $s->jenis_sasirangan ?></td>
                     <td><img src='<?= base_url() ?>./assets/upload/<?= $s->foto_sasirangan ?>' style="width:100%;max-width:100px"></td>
+                    <?php if ($id_level == 1): ?>
                     <td class="align-items-center">
                         <div class="row g-2 align-items-center">
                             <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
@@ -59,6 +64,7 @@
                             </div>
                         </div>
                     </td>
+                    <?php endif; ?>
                 </tr>
                 <?php
                     }

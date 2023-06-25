@@ -105,6 +105,7 @@ class Keranjang extends CI_Controller {
 		$metode_pembayaran 			= $this->input->post('metode_pembayaran');
 		$metode_pengiriman 			= $this->input->post('metode_pengiriman');
 		$status 					= $this->input->post('status');
+		$invoiceNumber 				= uniqid('TMS-');
 
                 $data = array(
                     'jumlah' 			        => $jumlah,
@@ -116,6 +117,7 @@ class Keranjang extends CI_Controller {
                     'metode_pengiriman' 		=> $metode_pengiriman,
                     'keterangan' 		        => $keterangan,
                     'status' 		            => $status,
+					'id_invoice' 		        => $invoiceNumber
                 );
                 $this->db->insert('tb_transaksi_masuk', $data);
 
@@ -136,6 +138,7 @@ class Keranjang extends CI_Controller {
 		$status   					= 'Dikirim';
 		$metode_pembayaran   		= $this->input->post('metode_pembayaran');
 		$metode_pengiriman   		= $this->input->post('metode_pengiriman');
+		$invoiceNumber 				= random_int(1000, 9999);
 
 		// Ambil data dari tabel "keranjang" berdasarkan "id_pelanggan"
 		// $this->db->where('id_pelanggan', $id_pelanggan);
@@ -162,6 +165,7 @@ class Keranjang extends CI_Controller {
 				'metode_pengiriman' 		=> $metode_pengiriman,
 				'keterangan' 				=> $keterangan,
 				'status' 					=> $status,
+				'id_invoice' 		        => $invoiceNumber
 				// Tambahkan field lainnya sesuai kebutuhan
 			);
 

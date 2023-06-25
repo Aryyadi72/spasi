@@ -13,7 +13,7 @@
         </div>
         <!-- Page body -->
         <div class="page-body">
-          <div class="" style="margin-left:15px;margin-right:15px;">
+          <div class="container-xl">
             <div class="card">
               <div class="card-body">
                 <div id="table-default" class="table-responsive">
@@ -22,13 +22,10 @@
                       <tr>
                         <th><button class="table-sort" data-sort="sort-No">No</button></th>
                         <th><button class="table-sort" data-sort="sort-date">Tanggal Transaksi</button></th>
-                        <th><button class="table-sort" data-sort="sort-qty">Jumlah</button></th>
-                        <th><button class="table-sort" data-sort="sort-qty">Harga Satuan</button></th>
-                        <th><button class="table-sort" data-sort="sort-total">Total Harga</button></th>
                         <th><button class="table-sort" data-sort="sort-ket">Metode Pembayaran</button></th>
                         <th><button class="table-sort" data-sort="sort-ket">Metode Pengiriman</button></th>
                         <th><button class="table-sort" data-sort="sort-pelanggan">Pelanggan</button></th>
-                        <th><button class="table-sort" data-sort="sort-produk">Produk</button></th>
+                        <th><button class="table-sort" data-sort="sort-produk">Invoice</button></th>
                         <th><button class="table-sort" data-sort="sort-produk">Status</button></th>
                         <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
                       </tr>
@@ -41,13 +38,10 @@
                         ?>
                         <td class="sort-no"><?= $no++ ?></td>
                         <td class="sort-date"><?= $tm->tanggal_transakasi_masuk ?></td>
-                        <td class="sort-qty"><?= $tm->jumlah ?></td>
-                        <td class="sort-qty"><?= 'Rp ' . number_format($tm->harga_produk, 0, ',', '.'); ?></td>
-                        <td class="sort-total"><?= 'Rp ' . number_format($tm->total_harga, 0, ',', '.'); ?></td>
                         <td class="sort-ket"><?= $tm->metode_pembayaran ?></td>
                         <td class="sort-ket"><?= $tm->metode_pengiriman ?></td>
                         <td class="sort-pelanggan"><?= $tm->nama_pelanggan ?></td>
-                        <td class="sort-produk"><?= $tm->nama_sasirangan ?></td>
+                        <td class="sort-produk"><?= $tm->id_invoice ?></td>
 
                         <?php 
                             $status = $tm->status;
@@ -136,6 +130,19 @@
                           <!-- Detail -->
                             <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
                               <a href="<?= base_url('transaksi_masuk/ubah_transaksi_masuk/' . $tm->id_transaksi_masuk)?>" class="btn btn-yellow w-100 btn-icon btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-7" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                  <path d="M12 12l-2 3"></path>
+                                  <path d="M12 7v5"></path>
+                                </svg>
+                              </a>
+                            </div>
+                          <!-- Detail -->
+
+                          <!-- Detail -->
+                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                              <a href="<?= base_url('transaksi_masuk/detail_invoice/' . $tm->id_invoice)?>" class="btn btn-indigo w-100 btn-icon btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-7" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>

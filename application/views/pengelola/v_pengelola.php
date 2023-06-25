@@ -8,6 +8,7 @@
                   Data Pengelola
                 </h2>
               </div>
+              <?php if ($id_level == 1): ?>
               <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
                 <a href="<?= base_url('pengelola/addPengelola')?>" class="btn btn-indigo w-100">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -19,6 +20,7 @@
                     Tambah
                 </a>
               </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -38,7 +40,9 @@
                         <th><button class="table-sort" data-sort="sort-score">Foto</button></th>
                         <th><button class="table-sort" data-sort="sort-score">Email</button></th>
                         <th><button class="table-sort" data-sort="sort-level">Level</button></th>
+                        <?php if ($id_level == 1): ?>
                         <th><button class="table-sort">Aksi</button></th>
+                        <?php endif; ?>
                       </tr>
                     </thead>
                     <tbody class="table-tbody">
@@ -54,6 +58,7 @@
                         <td><img src='<?= base_url() ?>./assets/upload/pengelola/<?= $p->foto ?>' style="width:100%;max-width:100px"></td>
                         <td class="sort-score"><?= $p->email ?></td>
                         <td class="sort-level"><?= $p->id_level ?></td>
+                        <?php if ($id_level == 1): ?>
                         <td>
                           <div class="row g-2 align-items-center">
                           <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
@@ -78,6 +83,7 @@
                           </div>
                           </div>
                         </td>
+                        <?php endif; ?>
                       </tr>
                       <?php
                         }

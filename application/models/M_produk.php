@@ -5,7 +5,8 @@
         {
             $this->db->select('*');
             $this->db->from('tb_produk');
-            $this->db->join('tb_sasirangan','tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');      
+            $this->db->join('tb_sasirangan','tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->order_by('tanggal_ditambahkan', 'desc');
             $query = $this->db->get();
             return $query;
         }
@@ -27,8 +28,8 @@
             $this->db->from('tb_transaksi_masuk', 'tb_produk');
             $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
             $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
-            $this->db->where('tb_transaksi_masuk.id_transaksi_masuk', $id);
-            $query = $this->db->get()->row_array();
+            $this->db->where('tb_transaksi_masuk.id_invoice', $id);
+            $query = $this->db->get()->result_array();
             return $query;
         }
 
@@ -64,6 +65,17 @@
             } else {
                 return array();
             }
+        }
+
+        public function get_total_harga_by_id_invoice($id_invoice)
+        {
+            $this->db->select('SUM(total_harga) as total_harga');
+            $this->db->from('tb_transaksi_masuk');
+            $this->db->where('id_invoice', $id_invoice);
+            $query = $this->db->get();
+            $result = $query->row();
+
+            return $result->total_harga;
         }
     } 
 ?>

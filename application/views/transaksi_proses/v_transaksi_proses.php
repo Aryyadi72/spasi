@@ -24,6 +24,7 @@
                         <th><button class="table-sort" data-sort="sort-date">Tanggal Transaksi Diproses</button></th>
                         <th><button class="table-sort" data-sort="sort-total">Tanggal Transaksi Masuk</button></th>
                         <th><button class="table-sort" data-sort="sort-ket">Nama Pengelola</button></th>
+                        <th><button class="table-sort" data-sort="sort-ket">Invoice</button></th>
                         <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
                       </tr>
                     </thead>
@@ -37,16 +38,25 @@
                         <td class="sort-date"><?= $tp->tanggal_transaksi_proses?></td>
                         <td class="sort-ket"><?= $tp->tanggal_transakasi_masuk ?></td>
                         <td class="sort-total"><?= $tp->nama ?></td>
+                        <td class="sort-total"><?= $tp->id_invoice ?></td>
                         <td>
                           <div class="row g-2 align-items-center">
-                          <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                            <a href="<?= base_url('transaksi_masuk/transaksi_selesai/' . $tp->id_transaksi_masuk)?>" class="btn btn-teal w-100 btn-icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" fill="currentColor"></path>
-                              </svg>
-                            </a>
-                          </div>
+                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                              <a href="<?= base_url('transaksi_masuk/proses_transaksi_keluar/' . $tp->id_invoice)?>" class="btn btn-teal w-100 btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                  <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" fill="currentColor"></path>
+                                </svg>
+                              </a>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                              <a href="<?= base_url('transaksi_masuk/masuk_transaksi_proses/' . $tp->id_invoice)?>" class="btn btn-indigo w-100 btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                  <path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-1.293 5.953a1 1 0 0 0 -1.32 -.083l-.094 .083l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.403 1.403l.083 .094l2 2l.094 .083a1 1 0 0 0 1.226 0l.094 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" fill="currentColor"></path>
+                                </svg>
+                              </a>
+                            </div>
                           </div>
                         </td>
                       </tr>

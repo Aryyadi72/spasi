@@ -17,8 +17,8 @@
                     </button>
                 </div>
 
-                <div class="col-auto ms-auto d-print-none">
-                    <a class="btn btn-yellow" href="<?= base_url('dashboard_pelanggan/tambah_rating?id='.$invoice['id_produk']) ?>">
+                <div class="col-auto ms-auto d-print-none" hidden>
+                    <a class="btn btn-yellow" href="<?= base_url('dashboard_pelanggan/tambah_rating') ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
@@ -46,24 +46,31 @@
                             <th class="text-end" style="width: 1%">Total Perproduk</th>
                         </tr>
                     </thead>
+                        <?php 
+                            $no=1; 
+                            foreach($invoice as $i) :
+                        ?>
                         <tr>
                             <td class="text-center">1</td>
                                 <td>
-                                    <p class="strong mb-1"><?= $invoice['nama_sasirangan'] ?></p>
-                                    <div class="text-muted"><?= $invoice['deskripsi_produk'] ?></div>
+                                    <p class="strong mb-1"><?= $i['nama_sasirangan'] ?></p>
+                                    <div class="text-muted"><?= $i['deskripsi_produk'] ?></div>
                                 </td>
                                 
                             <td class="text-center">
-                                <?= $invoice['jumlah'] ?>
+                                <?= $i['jumlah'] ?>
                             </td>
-                            <td class="text-end"><?= 'Rp ' . number_format($invoice['harga_produk'], 0, ',', '.'); ?></td>
-                            <td class="text-end"><?= 'Rp ' . number_format($invoice['total_harga'], 0, ',', '.'); ?></td>
+                            <td class="text-end"><?= 'Rp ' . number_format($i['harga_produk'], 0, ',', '.'); ?></td>
+                            <td class="text-end"><?= 'Rp ' . number_format($i['total_harga'], 0, ',', '.'); ?></td>
                         </tr>
-                        
+                        <?php
+                            endforeach;
+                        ?>
                         <tr>
                             <td colspan="4" class="font-weight-bold text-uppercase text-end">Total</td>
-                            <td class="font-weight-bold text-end"><?= 'Rp ' . number_format($invoice['total_harga'], 0, ',', '.'); ?></td>
+                            <td class="font-weight-bold text-end"><?= 'Rp ' . number_format($total_harga, 0, ',', '.'); ?></td>
                         </tr>
+                        
                 </table>
                     <p class="text-muted text-center mt-5">Thank you very much for doing business with us. We look forward to working with
                     you again!</p>

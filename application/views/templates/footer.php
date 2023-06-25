@@ -144,6 +144,12 @@
 			$('#example').DataTable();
 		});
 	</script>
+
+	<script>
+		$(document).ready(function () {
+			$('#tm').DataTable();
+		});
+	</script>
     <!-- Libs JS -->
     <script src="<?= base_url()?>./assets/dist/libs/apexcharts/dist/apexcharts.min.js?1674944402" defer></script>
     <script src="<?= base_url()?>./assets/dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1674944402" defer></script>

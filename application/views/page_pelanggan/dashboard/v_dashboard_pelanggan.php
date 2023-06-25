@@ -19,7 +19,7 @@
                   </div>
 
                   <div class="col-auto ms-auto d-print-none">
-                    <div class="btn-list">
+                    <div class="btn-list"  hidden>
                       <a href="#" class="btn btn-teal d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-spreadsheet" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -51,11 +51,13 @@
                         <tr>
                           <th><button class="table-sort" data-sort="sort-No">No</button></th>
                           <th><button class="table-sort" data-sort="sort-date">Tanggal Pemesanan</button></th>
+                          <th><button class="table-sort" data-sort="sort-total">Harga Satuan</button></th>
+                          <th><button class="table-sort" data-sort="sort-pelanggan">Jumlah</button></th>
                           <th><button class="table-sort" data-sort="sort-total">Total Harga</button></th>
                           <th><button class="table-sort" data-sort="sort-ket">Keterangan</button></th>
-                          <th><button class="table-sort" data-sort="sort-pelanggan">Jumlah</button></th>
                           <th><button class="table-sort" data-sort="sort-produk">Metode Pembayaran</button></th>
                           <th><button class="table-sort" data-sort="sort-produk">Metode Pengiriman</button></th>
+                          <th><button class="table-sort" data-sort="sort-produk">Kode Invoice</button></th>
                           <th><button class="table-sort" data-sort="sort-pelanggan">Status</button></th>
                           <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
                         </tr>
@@ -68,11 +70,13 @@
                           ?>
                           <td class="sort-no"><?= $no++ ?></td>
                           <td class="sort-date" data-date="1628071164"><?= $tm->tanggal_transakasi_masuk ?></td>
+                          <td class="sort-pelanggan"><?= 'Rp ' . number_format($tm->harga_produk, 0, ',', '.'); ?></td>
+                          <td class="sort-pelanggan"><?= $tm->jumlah ?></td>
                           <td class="sort-total"><?= 'Rp ' . number_format($tm->total_harga, 0, ',', '.'); ?></td>
                           <td class="sort-ket"><?= $tm->keterangan ?></td>
-                          <td class="sort-pelanggan"><?= $tm->jumlah ?></td>
                           <td class="sort-produk"><?= $tm->metode_pembayaran ?></td>
                           <td class="sort-produk"><?= $tm->metode_pengiriman ?></td>
+                          <td class="sort-produk"><?= $tm->id_invoice ?></td>
 
                           <?php 
                             $status = $tm->status;
@@ -154,13 +158,20 @@
                                 </div>
 
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                                  <a href="<?= base_url('dashboard_pelanggan/invoice/'.$tm->id_transaksi_masuk) ?>" class="btn btn-green w-100 btn-icon btn-sm">
+                                  <a href="<?= base_url('dashboard_pelanggan/invoice/'.$tm->id_invoice) ?>" class="btn btn-green w-100 btn-icon btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                                         <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
                                         <path d="M9 17h6"></path>
                                         <path d="M9 13h6"></path>
+                                    </svg>
+                                  </a>
+                                  <br>
+                                  <a href="<?= base_url('dashboard_pelanggan/tambah_rating?id='.$tm->id_produk) ?>" class="btn btn-yellow w-100 btn-icon btn-sm" style="margin-top:5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
                                     </svg>
                                   </a>
                               </div>

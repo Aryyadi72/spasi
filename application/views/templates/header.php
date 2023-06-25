@@ -129,7 +129,7 @@
             </div>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(<?= base_url()?>./assets/static/avatars/033f.jpg)"></span>
+                <span class="avatar avatar-sm" style="background-image: url(<?= base_url() ?>assets/upload/pengelola/<?= $username['foto'] ?>)"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div><?= $username['nama'] ?></div>
                   <div class="mt-1 small text-muted"><?= $username['username'] ?></div>
@@ -176,7 +176,7 @@
                       </svg><!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
                     </span>
                     <span class="nav-link-title">
-                     Produk
+                      Produk
                     </span>
                   </a>
                   <div class="dropdown-menu">
@@ -237,11 +237,9 @@
                     </span>
                   </a>
                   <div class="dropdown-menu">
-                    <?php if ($id_level == 1): ?> <!-- Jika id_level = 1 (admin) -->
                       <a class="dropdown-item" href="<?= base_url('pengelola') ?>">
                         Data Pengelola
                       </a>
-                    <?php endif; ?>
                     <a class="dropdown-item" href="<?= base_url('pelanggan') ?>">
                       Data Pelanggan
                     </a>

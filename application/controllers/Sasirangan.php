@@ -20,12 +20,17 @@ class Sasirangan extends CI_Controller {
 	 */
 	public function index()
 	{
+		// Mengambil username pengguna berdasarkan id_pengelola yang login
 		$id_pengelola = $this->session->userdata('id_pengelola');
 		$data['username'] = $this->db->get_where('tb_pengelola', ['id_pengelola' => $id_pengelola])->row_array();
+
+		// Mengambil id level pengelola yang login
 		$data['id_level'] 	= $this->session->userdata('id_level');
+		$data['title'] = "Data Sasirngan - SPASI";
+
 		$data['sasirangan'] = $this->M_sasirangan->show_data()->result();
 		$data['sasirangan'] = $this->M_sasirangan->get_data('tb_sasirangan')->result();
-		$data['title'] = "Data Sasirngan - SPASI";
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('sasirangan/v_sasirangan', $data);
 		$this->load->view('templates/footer');

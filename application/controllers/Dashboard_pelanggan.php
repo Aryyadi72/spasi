@@ -8,10 +8,9 @@ class Dashboard_pelanggan extends CI_Controller {
 		$title['title'] = "Dashboard - SPASI";
 		$id_pelanggan = $this->session->userdata('id_pelanggan');
 
-		$this->db->where('id_pelanggan', $id_pelanggan);
-		$data['transaksi'] = $this->db->get('tb_transaksi_masuk')->result();
-		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        $data['transaksi'] = $this->M_transaksi->show_data_dashpel($id_pelanggan);
 
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
         $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
 
 		$this->load->view('page_pelanggan/templates/header', $title);
@@ -98,6 +97,7 @@ class Dashboard_pelanggan extends CI_Controller {
 		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
         $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
 		$data['invoice'] = $this->M_produk->getInvoice($id);
+		$data['total_harga'] = $this->M_produk->get_total_harga_by_id_invoice($id);
 
 		$this->load->view('page_pelanggan/templates/header', $title);
         $this->load->view('page_pelanggan/templates/navbar', $dataCount);

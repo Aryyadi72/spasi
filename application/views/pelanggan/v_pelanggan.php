@@ -8,7 +8,7 @@
                   Data Pelanggan
                 </h2>
               </div>
-              <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
+              <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3" hidden>
                 <a href="<?= base_url('pelanggan/addPelanggan')?>" class="btn btn-indigo w-100">
                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -54,7 +54,7 @@
                         <td class="sort-username"><?= $p->username ?></td>
                         <td>
                           <div class="row g-2 align-items-center">
-                          <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                          <div class="col-6 col-sm-4 col-md-2 col-xl-auto" hidden>
                             <a href="<?= base_url('pelanggan/updatePelanggan/'. $p->id_pelanggan) ?>" class="btn btn-yellow w-100 btn-icon">
                               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

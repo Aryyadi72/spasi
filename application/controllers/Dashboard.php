@@ -28,6 +28,7 @@ class Dashboard extends CI_Controller {
 		$dataCount['totalproduk'] = $this->M_sasirangan->getTotalProduk();
 		$dataCount['totalmasuk'] = $this->M_sasirangan->getTotalMasuk();
 		$dataCount['totalselesai'] = $this->M_sasirangan->getTotalSelesai();
+		
 		$this->load->view('templates/header', $data);
 		$this->load->view('dashboard', $dataCount);
 		$this->load->view('templates/footer');
