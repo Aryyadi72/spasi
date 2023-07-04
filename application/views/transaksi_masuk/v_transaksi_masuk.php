@@ -56,15 +56,19 @@
                                   case 'Dibatalkan':
                                       $badgeClass = 'bg-red';
                                       break;
+                                  case 'Diterima':
+                                      $badgeClass = 'bg-secondary';
+                                      break;
                                   default:
                                       $badgeClass = 'bg-blue';
                                       break;
                               }
                           ?>
 
-                        <td style="margin-bottom:5px;margin-top:10px;padding:5px;" class="badge <?= $badgeClass; ?>"><?= $status ?></td>
+                        <td><span class="badge <?= $badgeClass; ?>"><?= $tm->status ?></span></td>
                         
                         <td>
+                          <?php if ($tm->status == 'Dikirim'): ?>
                           <div class="row g-2 align-items-center">
 
                           <!-- Lokasi -->
@@ -128,7 +132,7 @@
                           <!-- Struk -->
 
                           <!-- Detail -->
-                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                            <div class="col-6 col-sm-4 col-md-2 col-xl-auto" hidden>
                               <a href="<?= base_url('transaksi_masuk/ubah_transaksi_masuk/' . $tm->id_transaksi_masuk)?>" class="btn btn-yellow w-100 btn-icon btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-7" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -153,6 +157,7 @@
                             </div>
                           </div>
                           <!-- Detail -->
+                          <?php endif; ?>
                         </td>
                       </tr>
                       <?php

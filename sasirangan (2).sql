@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 20, 2023 at 02:45 PM
+-- Generation Time: Jun 26, 2023 at 09:08 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -40,8 +40,7 @@ CREATE TABLE `tb_keranjang` (
 --
 
 INSERT INTO `tb_keranjang` (`id_keranjang`, `jumlah`, `total_harga`, `id_pelanggan`, `id_produk`) VALUES
-(13, 2, '40000', 1, 10),
-(14, 3, '76500', 5, 11);
+(13, 2, '40000', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -135,8 +134,8 @@ CREATE TABLE `tb_produk` (
 --
 
 INSERT INTO `tb_produk` (`id_produk`, `harga_produk`, `deskripsi_produk`, `stok`, `tanggal_ditambahkan`, `id_sasirangan`) VALUES
-(10, '20000', 'Sasirangan Bagus Ajib', 18, '2023-05-25', 3),
-(11, '25500', 'Model sasirangan baru', 30, '2023-06-13', 2);
+(10, '20000', 'Sasirangan Bagus Ajib', 4, '2023-05-25', 3),
+(11, '25500', 'Model sasirangan baru', 12, '2023-06-13', 2);
 
 -- --------------------------------------------------------
 
@@ -197,6 +196,13 @@ CREATE TABLE `tb_transaksi_batal` (
   `id_transaksi_masuk` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `tb_transaksi_batal`
+--
+
+INSERT INTO `tb_transaksi_batal` (`id_transaksi_batal`, `tanggal_transaksi_batal`, `id_pengelola`, `id_transaksi_masuk`) VALUES
+(5, '2023-06-26', 2, 56);
+
 -- --------------------------------------------------------
 
 --
@@ -216,7 +222,9 @@ CREATE TABLE `tb_transaksi_keluar` (
 --
 
 INSERT INTO `tb_transaksi_keluar` (`id_transaksi_keluar`, `tanggal_transaksi_proses`, `id_pengelola`, `tanggal_transaksi_keluar`, `id_transaksi_masuk`) VALUES
-(1, '2023-06-19', 2, '2023-06-19', 12);
+(1, '2023-06-26', 2, '2023-06-26', 52),
+(2, '2023-06-26', 2, '2023-06-26', 53),
+(3, '2023-06-26', 2, '2023-06-26', 55);
 
 -- --------------------------------------------------------
 
@@ -235,7 +243,7 @@ CREATE TABLE `tb_transaksi_masuk` (
   `status` varchar(100) NOT NULL,
   `id_pelanggan` int NOT NULL,
   `id_produk` int NOT NULL,
-  `id_invoice` int DEFAULT NULL
+  `id_invoice` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -243,16 +251,10 @@ CREATE TABLE `tb_transaksi_masuk` (
 --
 
 INSERT INTO `tb_transaksi_masuk` (`id_transaksi_masuk`, `tanggal_transakasi_masuk`, `jumlah`, `metode_pembayaran`, `metode_pengiriman`, `total_harga`, `keterangan`, `status`, `id_pelanggan`, `id_produk`, `id_invoice`) VALUES
-(12, '2023-06-19', 2, 'Cash', 'Ambil di Tempat', '40000', 'Pesanan sedang Diproses', 'Selesai', 5, 10, NULL),
-(13, '2023-06-20', 2, 'Cash', 'Ambil di Tempat', '40000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 10, NULL),
-(14, '2023-06-20', 2, 'Cash', 'Ambil di Tempat', '40000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 10, NULL),
-(15, '2023-06-20', 3, 'Cash', 'Ambil di Tempat', '76500', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 11, NULL),
-(16, '2023-06-20', 4, 'Cash', 'Ambil di Tempat', '102000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 11, NULL),
-(17, '2023-06-20', 2, 'Cash', 'Ambil di Tempat', '40000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 10, NULL),
-(18, '2023-06-20', 2, 'Cash', 'Ambil di Tempat', '40000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 5, 10, NULL),
-(19, '2023-06-20', 3, 'Cash', 'Ambil di Tempat', '76500', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 5, 11, NULL),
-(20, '2023-06-20', 3, 'Transfer', 'Kirim ke Alamat Tujuan', '60000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 10, NULL),
-(21, '2023-06-20', 2, 'Transfer', 'Kirim ke Alamat Tujuan', '51000', 'Harga belum termasuk ongkir, ongkir akan di update setelah pesanan diterima oleh Kasir.', 'Dikirim', 1, 11, NULL);
+(52, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '20000', 'Transaksi Diproses', 'Selesai', 5, 10, '8901'),
+(53, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '25500', 'Transaksi Diproses', 'Selesai', 5, 11, '8901'),
+(55, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '20000', 'Transaksi Diproses.', 'Selesai', 5, 10, '8386'),
+(56, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '25500', 'Transaksi Dibatalkan.', 'Dibatalkan', 5, 11, '8699');
 
 -- --------------------------------------------------------
 
@@ -286,7 +288,8 @@ CREATE TABLE `tb_ulasan` (
 --
 
 INSERT INTO `tb_ulasan` (`id_ulasan`, `rating`, `deskripsi`, `id_pelanggan`, `id_produk`) VALUES
-(1, 3, 'Bagus', 5, 10);
+(1, 3, 'Bagus', 5, 10),
+(2, 3, 'Bagus', 5, 10);
 
 --
 -- Indexes for dumped tables
@@ -352,8 +355,8 @@ ALTER TABLE `tb_titik_pengiriman`
 --
 ALTER TABLE `tb_transaksi_batal`
   ADD PRIMARY KEY (`id_transaksi_batal`),
-  ADD KEY `fk_batal_pengelola` (`id_pengelola`),
-  ADD KEY `fk_batal_masuk` (`id_transaksi_masuk`);
+  ADD KEY `fk_batal_masuk` (`id_transaksi_masuk`),
+  ADD KEY `fk_batal_pengelola` (`id_pengelola`);
 
 --
 -- Indexes for table `tb_transaksi_keluar`
@@ -394,7 +397,7 @@ ALTER TABLE `tb_ulasan`
 -- AUTO_INCREMENT for table `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `id_keranjang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_keranjang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `tb_level`
@@ -442,31 +445,31 @@ ALTER TABLE `tb_titik_pengiriman`
 -- AUTO_INCREMENT for table `tb_transaksi_batal`
 --
 ALTER TABLE `tb_transaksi_batal`
-  MODIFY `id_transaksi_batal` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_batal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_keluar`
 --
 ALTER TABLE `tb_transaksi_keluar`
-  MODIFY `id_transaksi_keluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_transaksi_keluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_masuk`
 --
 ALTER TABLE `tb_transaksi_masuk`
-  MODIFY `id_transaksi_masuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_transaksi_masuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_proses`
 --
 ALTER TABLE `tb_transaksi_proses`
-  MODIFY `id_transaksi_proses` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_transaksi_proses` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tb_ulasan`
 --
 ALTER TABLE `tb_ulasan`
-  MODIFY `id_ulasan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ulasan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -513,6 +516,7 @@ ALTER TABLE `tb_titik_pengiriman`
 -- Constraints for table `tb_transaksi_batal`
 --
 ALTER TABLE `tb_transaksi_batal`
+  ADD CONSTRAINT `fk_batal_masuk` FOREIGN KEY (`id_transaksi_masuk`) REFERENCES `tb_transaksi_masuk` (`id_transaksi_masuk`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_batal_pengelola` FOREIGN KEY (`id_pengelola`) REFERENCES `tb_pengelola` (`id_pengelola`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

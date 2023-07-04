@@ -16,6 +16,7 @@
     <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/clothes-basket.svg" />
     <!-- CSS Datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.4.1/css/dataTables.dateTime.min.css">
     <!-- CSS files -->
     <link href="<?= base_url()?>./assets/dist/css/tabler.min.css?1674944402" rel="stylesheet"/>
     <link href="<?= base_url()?>./assets/dist/css/tabler-flags.min.css?1674944402" rel="stylesheet"/>
@@ -214,8 +215,8 @@
                     <a class="dropdown-item" href="<?= base_url('transaksi_masuk/transaksi_keluar') ?>">
                       Transaksi Keluar
                     </a>
-                    <a class="dropdown-item" href="<?= base_url('detail_transaksi') ?>">
-                      Detail Transaksi
+                    <a class="dropdown-item" href="<?= base_url('transaksi_masuk/transaksi_batal') ?>">
+                      Transaksi Batal
                     </a>
                   </div>
                 </li>

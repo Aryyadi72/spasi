@@ -9,6 +9,7 @@
             $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
             $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
             $this->db->where('tb_transaksi_masuk.id_transaksi_masuk IN (SELECT MIN(id_transaksi_masuk) FROM tb_transaksi_masuk GROUP BY id_invoice)');
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
             $query = $this->db->get();
             return $query;
         }
@@ -20,6 +21,7 @@
             $this->db->join('tb_pengelola','tb_pengelola.id_pengelola = tb_transaksi_proses.id_pengelola');
             $this->db->join('tb_transaksi_masuk','tb_transaksi_masuk.id_transaksi_masuk = tb_transaksi_proses.id_transaksi_masuk');
             $this->db->where('tb_transaksi_proses.id_transaksi_masuk IN (SELECT MIN(id_transaksi_masuk) FROM tb_transaksi_masuk GROUP BY id_invoice)');
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
             $query = $this->db->get();
             return $query;
         }
@@ -34,6 +36,7 @@
             $this->db->join('tb_pelanggan','tb_pelanggan.id_pelanggan = tb_transaksi_masuk.id_pelanggan');
             $this->db->join('tb_produk','tb_produk.id_produk = tb_transaksi_masuk.id_produk');
             $this->db->join('tb_sasirangan','tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
             $query = $this->db->get();
             return $query;
         }
@@ -149,10 +152,69 @@
             $this->db->from('tb_transaksi_masuk');
             $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
             $this->db->where('tb_transaksi_masuk.id_pelanggan', $id_pelanggan);
-            
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
             return $this->db->get()->result();
         }
 
+        public function show_data_batal()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_transaksi_batal','tb_transaksi_masuk');
+            $this->db->join('tb_transaksi_masuk', 'tb_transaksi_masuk.id_transaksi_masuk = tb_transaksi_batal.id_transaksi_masuk');
+            $this->db->join('tb_pengelola', 'tb_pengelola.id_pengelola = tb_transaksi_batal.id_pengelola');
+            $this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_transaksi_masuk.id_pelanggan');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
+            $query = $this->db->get();
+            return $query;
+        }
 
+        public function show_data_dashadmin()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_transaksi_masuk', 'tb_transaksi_keluar');
+            $this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_transaksi_masuk.id_pelanggan');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
+            $query = $this->db->get();
+            return $query;
+        }
+
+        public function show_data_dashadmin_2()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_transaksi_masuk', 'tb_transaksi_keluar');
+            $this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_transaksi_masuk.id_pelanggan');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->join('tb_transaksi_keluar', 'tb_transaksi_keluar.id_transaksi_masuk = tb_transaksi_masuk.id_transaksi_masuk');
+            $this->db->order_by('tanggal_transakasi_masuk', 'desc');
+            $query = $this->db->get();
+            return $query;
+        }
+
+        public function get_data_by_month($selectedMonth)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_transaksi_masuk', 'tb_transaksi_keluar');
+            $this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_transaksi_masuk.id_pelanggan');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->join('tb_transaksi_keluar', 'tb_transaksi_keluar.id_transaksi_masuk = tb_transaksi_masuk.id_transaksi_masuk');
+            $this->db->where("MONTH(tb_transaksi_keluar.tanggal_transaksi_keluar) = $selectedMonth");
+            $query = $this->db->get();
+            return $query;
+        }
+
+        public function ubahStatus($id_transaksi_masuk)
+        {
+            $data = array(
+                'status' => 'Diterima'
+            );
+            $this->db->where('id_transaksi_masuk', $id_transaksi_masuk);
+            $this->db->update('tb_transaksi_masuk', $data);
+        }
     } 
 ?>

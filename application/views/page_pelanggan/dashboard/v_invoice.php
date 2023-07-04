@@ -60,15 +60,15 @@
                             <td class="text-center">
                                 <?= $i['jumlah'] ?>
                             </td>
-                            <td class="text-end"><?= 'Rp ' . number_format($i['harga_produk'], 0, ',', '.'); ?></td>
-                            <td class="text-end"><?= 'Rp ' . number_format($i['total_harga'], 0, ',', '.'); ?></td>
+                            <td class="text-end"><?= 'Rp ' . number_format($i['harga_produk'], 2, ',', '.'); ?></td>
+                            <td class="text-end"><?= 'Rp ' . number_format($i['total_harga'], 2, ',', '.'); ?></td>
                         </tr>
                         <?php
                             endforeach;
                         ?>
                         <tr>
                             <td colspan="4" class="font-weight-bold text-uppercase text-end">Total</td>
-                            <td class="font-weight-bold text-end"><?= 'Rp ' . number_format($total_harga, 0, ',', '.'); ?></td>
+                            <td class="font-weight-bold text-end"><?= 'Rp ' . number_format($total_harga, 2, ',', '.'); ?></td>
                         </tr>
                         
                 </table>

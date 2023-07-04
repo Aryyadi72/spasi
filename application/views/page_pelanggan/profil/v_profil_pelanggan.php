@@ -20,6 +20,7 @@
                   <div class="card-body">
                     <h2 class="mb-4">My Account</h2>
                     <h3 class="card-title">Profile Details</h3>
+                    <form action="<?php echo base_url('profil_pelanggan/proses_edit/' . $profil['id_pelanggan']); ?>" method="post" enctype="multipart/form-data" role="form">
                     <div class="row align-items-center">
                       <div class="col-auto"><span class="avatar avatar-xl" style="background-image: url(<?= base_url() ?>assets/upload/pelanggan/<?= $profil['foto'] ?>)"></span>
                       </div>
@@ -34,15 +35,15 @@
                     <div class="row g-3">
                       <div class="col-md">
                         <div class="form-label">Nama</div>
-                        <input type="text" class="form-control" value="<?= $profil['nama_pelanggan'] ?>">
+                        <input type="text" class="form-control" value="<?= $profil['nama_pelanggan'] ?>" name="nama_pelanggan">
                       </div>
                       <div class="col-md">
                         <div class="form-label">Alamat</div>
-                        <input type="text" class="form-control" value="<?= $profil['alamat'] ?>">
+                        <input type="text" class="form-control" value="<?= $profil['alamat'] ?>" name="alamat">
                       </div>
                       <div class="col-md">
                         <div class="form-label">Nomor Telepon</div>
-                        <input type="text" class="form-control" value="<?= $profil['no_telp'] ?>">
+                        <input type="text" class="form-control" value="<?= $profil['no_telp'] ?>" name="no_telp">
                       </div>
                     </div>
                     <h3 class="card-title mt-4">Username</h3>
@@ -50,7 +51,7 @@
                     <div>
                       <div class="row g-2">
                         <div class="col-auto">
-                          <input type="text" class="form-control w-auto" value="<?= $profil['username'] ?>">
+                          <input type="text" class="form-control w-auto" value="<?= $profil['username'] ?>" name="username">
                         </div>
                         <div class="col-auto"><a href="#" class="btn">
                             Change
@@ -81,11 +82,10 @@
                       <a href="#" class="btn">
                         Cancel
                       </a>
-                      <a href="#" class="btn btn-primary">
-                        Submit
-                      </a>
+                      <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

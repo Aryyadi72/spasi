@@ -27,36 +27,21 @@
                         <th><button class="table-sort" data-sort="sort-ket">Keterangan</button></th>
                         <th><button class="table-sort" data-sort="sort-pelanggan">Pelanggan</button></th>
                         <th><button class="table-sort" data-sort="sort-produk">Produk</button></th>
-                        <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
                       </tr>
                     </thead>
                     <tbody class="table-tbody">
                       <tr>
                         <?php 
                           $no=1; 
-                          foreach($transaksi as $tm) {
+                          foreach($batal as $tm) {
                         ?>
                         <td class="sort-no"><?= $no++ ?></td>
                         <td class="sort-qty"><?= $tm->jumlah ?></td>
                         <td class="sort-date"><?= $tm->tanggal_transakasi_masuk ?></td>
-                        <td class="sort-total"><?= $tm->total_harga ?></td>
+                        <td class="sort-total"><?= 'Rp ' . number_format($tm->total_harga, 2, ',', '.'); ?></td>
                         <td class="sort-ket"><?= $tm->keterangan ?></td>
                         <td class="sort-pelanggan"><?= $tm->nama ?></td>
                         <td class="sort-produk"><?= $tm->nama_sasirangan ?></td>
-                        <td>
-                          <div class="row g-2 align-items-center">
-                          <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                            <a href="<?= base_url('transaksi_masuk/tambah_proses?id=' . $tm->id_transaksi_masuk)?>" class="btn btn-yellow w-100 btn-icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-7" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                                <path d="M12 12l-2 3"></path>
-                                <path d="M12 7v5"></path>
-                              </svg>
-                            </a>
-                          </div>
-                          </div>
-                        </td>
                       </tr>
                       <?php
                           }

@@ -42,6 +42,12 @@
             $this->db->where_in('id_keranjang', $selectedItems);
             $this->db->delete('tb_keranjang');
         }
+
+        public function delete_data($id_keranjang)
+        {
+            $this->db->where('id_keranjang', $id_keranjang);
+            return $this->db->delete('tb_keranjang');
+        }
     }
 
 ?>

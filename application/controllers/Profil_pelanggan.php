@@ -32,4 +32,60 @@ class Profil_pelanggan extends CI_Controller {
         $this->load->view('page_pelanggan/templates/footer');
 	}
 
+	public function proses_edit($id)
+    {
+		$id = $this->session->userdata('id_pelanggan');
+        // $id = $this->input->post('id_pelanggan');
+
+		$config['upload_path']          = './assets/upload/pelanggan';
+        $config['allowed_types']        = 'gif|jpg|png|PNG|jpeg';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('userfile')) {
+
+		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
+		$alamat 	= $this->input->post('alamat');
+		$no_telp 	= $this->input->post('no_telp');
+		$username 	= $this->input->post('username');
+
+		$data = array(
+			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
+            'alamat' 	=> $alamat,
+			'no_telp' 	=> $no_telp,
+			'username' 	=> $username,
+        );
+        
+		$this->db->where('id_pelanggan', $id);
+		$this->db->update('tb_pelanggan', $data);
+        redirect('dashboard_pelanggan');
+
+        } else {
+			
+		$foto 					= $this->upload->data();
+        $foto 					= $foto['file_name'];
+		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
+		$alamat 				= $this->input->post('alamat');
+		$no_telp 				= $this->input->post('no_telp');
+		$username 				= $this->input->post('username');
+
+		$data = array(
+			'nama_pelanggan' 		=> ucwords($nama_pelanggan),
+            'alamat' 				=> $alamat,
+			'no_telp' 				=> $no_telp,
+			'foto' 					=> $foto,
+			'username' 				=> $username,
+        );
+        
+		$this->db->where('id_pelanggan', $id);
+		$this->db->update('tb_pelanggan', $data);
+		
+	}
+	redirect('dashboard_pelanggan');
+
+    }
+
 }

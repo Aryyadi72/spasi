@@ -56,14 +56,14 @@ class Pelanggan extends CI_Controller {
             echo "Gagal Tambah";
         } else {
 			
-		$foto 		= $this->upload->data();
-        $foto 		= $foto['file_name'];
-		$nama_pelanggan 		= $this->input->post('nama_pelanggan');
-		$alamat 	= $this->input->post('alamat');
-		$no_telp 	= $this->input->post('no_telp');
-		$username 	= $this->input->post('username');
-		$password 	= $this->input->post('password');
-		$id_level 	= $this->input->post('id_level');
+		$foto 			= $this->upload->data();
+        $foto 			= $foto['file_name'];
+		$nama_pelanggan = $this->input->post('nama_pelanggan');
+		$alamat 		= $this->input->post('alamat');
+		$no_telp 		= $this->input->post('no_telp');
+		$username 		= $this->input->post('username');
+		$password 		= $this->input->post('password');
+		$id_level 		= $this->input->post('id_level');
 
 		$data = array(
 			'nama_pelanggan' 		=> ucwords($nama_pelanggan),

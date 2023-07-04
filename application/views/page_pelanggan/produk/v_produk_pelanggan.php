@@ -39,7 +39,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center">
                       <div class="">
-                        <a href="<?= base_url('transaksi_pelanggan/transaksi?id='. $p->id_produk) ?>" class="btn btn btn-indigo w-100 btn-icon">
+                        <a href="<?= base_url('transaksi_pelanggan/transaksi?id='. $p->id_produk) ?>" class="btn btn btn-indigo w-100 btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Checkout Produk">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M7 10l5 -6l5 6"></path>
@@ -49,7 +49,7 @@
                         </a>
                       </div>
                       <div class="" style="margin-left:5px;">
-                        <?php echo anchor('keranjang/tambah_keranjang?id='. $p->id_produk, '<div class="btn btn btn-green w-100 btn-icon">
+                        <?php echo anchor('keranjang/tambah_keranjang?id='. $p->id_produk, '<div class="btn btn btn-green w-100 btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Tambah Ke Keranjang">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -62,7 +62,7 @@
                       </div>
                       <div style="margin-left:15px;">
                         <div><?= $p->nama_sasirangan ?></div>
-                        <div class="text-muted"><?= 'Rp ' . number_format($p->harga_produk, 0, ',', '.'); ?></div>
+                        <div class="text-muted"><?= 'Rp ' . number_format($p->harga_produk, 2, ',', '.'); ?></div>
                       </div>
                       <div class="ms-auto">
                         <a href="#" class="text-muted">

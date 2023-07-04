@@ -86,7 +86,12 @@
 
                       <div class="tab-pane" id="tabs-ulasan-9">
                         <h4>Ulasan Pelanggan</h4>
-                        <div>Fringilla egestas nunc quis tellus diam rhoncus ultricies tristique enim at diam, sem nunc amet, pellentesque id egestas velit sed</div>
+                        <div>
+                          <?php foreach($ulasan as $u) : ?>
+                            <?= $u['deskripsi'] ?><br>
+                            oleh: <?= $u['nama_pelanggan'] ?><br><hr>
+                          <?php endforeach; ?>
+                        </div>
                       </div>
 
                     </div>

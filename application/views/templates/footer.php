@@ -139,6 +139,8 @@
 	<!-- Datatables -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+	<script src="https://cdn.datatables.net/datetime/1.4.1/js/dataTables.dateTime.min.js"></script>
 	<script>
 		$(document).ready(function () {
 			$('#example').DataTable();
@@ -150,6 +152,57 @@
 			$('#tm').DataTable();
 		});
 	</script>
+
+	<script>
+		$(document).ready(function () {
+			$('#detailmasuk').DataTable();
+		});
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			$('#detailkeluar').DataTable();
+		});
+	</script>
+
+	<script>
+		var minDate, maxDate;
+		
+		// DataTables initialisation
+		var table = $('#examplea').DataTable();
+
+		// Custom filtering function which will search data in column four between two values
+		DataTable.ext.search.push(function (settings, data, dataIndex) {
+			var min = minDate.val();
+			var max = maxDate.val();
+			var date = new Date(data[1]);
+		
+			if (
+				(min === null && max === null) ||
+				(min === null && date <= max) ||
+				(min <= date && max === null) ||
+				(min <= date && date <= max)
+			) {
+				return true;
+			}
+			return false;
+		});
+		
+		// Create date inputs
+		minDate = new DateTime('#min', {
+			format: 'MMMM Do YYYY'
+		});
+		maxDate = new DateTime('#max', {
+			format: 'MMMM Do YYYY'
+		});
+		
+		// Refilter the table
+		$('#min, #max').on('change', function () {
+			table.draw();
+		});
+	</script>
+
+	
     <!-- Libs JS -->
     <script src="<?= base_url()?>./assets/dist/libs/apexcharts/dist/apexcharts.min.js?1674944402" defer></script>
     <script src="<?= base_url()?>./assets/dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1674944402" defer></script>

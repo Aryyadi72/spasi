@@ -31,6 +31,7 @@ class Transaksi_pelanggan extends CI_Controller {
 		$metode_pembayaran 			= $this->input->post('metode_pembayaran');
 		$metode_pengiriman 			= $this->input->post('metode_pengiriman');
 		$status 					= $this->input->post('status');
+		$invoiceNumber 				= random_int(1000, 9999);
 
 		$harga_satuan = $this->db->get_where('tb_produk', array('id_produk' => $id_produk))->row()->harga_produk;
 		
@@ -46,6 +47,7 @@ class Transaksi_pelanggan extends CI_Controller {
 			'metode_pembayaran' 		=> $metode_pembayaran,
 			'metode_pengiriman' 		=> $metode_pengiriman,
 			'status' 					=> $status,
+			'id_invoice' 		        => $invoiceNumber
         );
         
 		$result = $this->M_transaksi->tambahTransaksi($data);

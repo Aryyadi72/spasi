@@ -48,7 +48,7 @@
                         ?>
                         <td class="sort-no"><?= $no++ ?></td>
                         <td class="sort-name"><?= $p->nama_sasirangan ?></td>
-                        <td class="sort-city"><?= 'Rp ' . number_format($p->harga_produk, 0, ',', '.'); ?></td>
+                        <td class="sort-city"><?= 'Rp ' . number_format($p->harga_produk, 2, ',', '.'); ?></td>
                         <td class="sort-type"><?= $p->stok ?></td>
                         <td><img src='<?= base_url() ?>./assets/upload/<?= $p->foto_sasirangan ?>' style="width:100%;max-width:100px"></td>
                         <td class="sort-level"><?= $p->deskripsi_produk ?></td>

@@ -77,5 +77,16 @@
 
             return $result->total_harga;
         }
+
+        public function show_ulasan_byid($id)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_ulasan');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_ulasan.id_produk');
+            $this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_ulasan.id_pelanggan');
+            $this->db->where('tb_ulasan.id_produk', $id);
+            $query = $this->db->get()->result_array();
+            return $query;
+        }
     } 
 ?>

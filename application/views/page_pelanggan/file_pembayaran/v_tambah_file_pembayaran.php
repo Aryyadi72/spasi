@@ -18,6 +18,8 @@
                     </div>
                 </div>
 
+                <p class="text-muted small lh-base">* Transfer ke 031-00-XXXXXXX-X an Admin</p>
+
             </div>
 
             <div class="card-footer text-end">

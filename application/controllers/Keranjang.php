@@ -186,4 +186,11 @@ class Keranjang extends CI_Controller {
 		redirect('dashboard_pelanggan');
 
 	}
+
+	public function deleteKeranjang($id_keranjang)
+    {
+		$this->M_keranjang->delete_data($id_keranjang);
+        // $this->session->set_flashdata('sukses', 'Data Dengan ID ' . $id_user . ' berhasil dihapus.');
+        redirect(base_url('produk_pelanggan'));
+    }
 }

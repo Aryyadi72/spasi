@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Landing Page - SPASI</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/clothes-basket.svg" />
         <!-- Font Awesome icons (free version)-->
@@ -30,9 +30,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link text-dark" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#portfolio">Katalog</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#about">Tentang</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="#team">Pengelola</a></li>
                         <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -50,8 +50,8 @@
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">Katalog</h2>
+                    <h3 class="section-subheading text-muted">Sajian Produk Kami yang Menarik</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 mb-4">
@@ -61,11 +61,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url()?>assets/landing/assets/img/portfolio/1.jpg" alt="..." />
+                                <img class="img-fluid" src="<?= base_url()?>assets/img/1.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                                <div class="portfolio-caption-heading">Sasirangan Banjar</div>
+                                <div class="portfolio-caption-subheading text-muted">Motif Kembang</div>
                             </div>
                         </div>
                     </div>
@@ -76,11 +76,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url()?>assets/landing/assets/img/portfolio/2.jpg" alt="..." />
+                                <img class="img-fluid" src="<?= base_url()?>assets/img/2.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                                <div class="portfolio-caption-heading">Sasirangan Banjar</div>
+                                <div class="portfolio-caption-subheading text-muted">Motif Kembang</div>
                             </div>
                         </div>
                     </div>
@@ -91,11 +91,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url()?>assets/landing/assets/img/portfolio/3.jpg" alt="..." />
+                                <img class="img-fluid" src="<?= base_url()?>assets/img/3.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                                <div class="portfolio-caption-heading">Sasirangan Banjar</div>
+                                <div class="portfolio-caption-subheading text-muted">Motif Kembang</div>
                             </div>
                         </div>
                     </div>
@@ -106,11 +106,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url()?>assets/landing/assets/img/portfolio/4.jpg" alt="..." />
+                                <img class="img-fluid" src="<?= base_url()?>assets/img/4.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                                <div class="portfolio-caption-heading">Sasirangan Banjar</div>
+                                <div class="portfolio-caption-subheading text-muted">Motif Kembang</div>
                             </div>
                         </div>
                     </div>
@@ -121,11 +121,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url()?>assets/landing/assets/img/portfolio/5.jpg" alt="..." />
+                                <img class="img-fluid" src="<?= base_url()?>assets/img/5.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                                <div class="portfolio-caption-heading">Sasirangan Banjar</div>
+                                <div class="portfolio-caption-subheading text-muted">Motif Kembang</div>
                             </div>
                         </div>
                     </div>
@@ -136,11 +136,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="<?= base_url()?>assets/landing/assets/img/portfolio/6.jpg" alt="..." />
+                                <img class="img-fluid" src="<?= base_url()?>assets/img/6.jpg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                                <div class="portfolio-caption-heading">Sasirangan Banjar</div>
+                                <div class="portfolio-caption-subheading text-muted">Motif Kembang</div>
                             </div>
                         </div>
                     </div>
@@ -151,58 +151,58 @@
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">Tentang</h2>
+                    <h3 class="section-subheading text-muted">Cara Anda melakukan Pemesanan di SPASI</h3>
                 </div>
                 <ul class="timeline">
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="<?= base_url()?>assets/landing/assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
+                                <h4>1</h4>
+                                <h4 class="subheading">Lakukan Login & Register</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Jika anda telah memiliki akun maka silahkan lakukan login, namun jika belum anda dapat melakukan register terlebih dahulu untuk membuat akun.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="<?= base_url()?>assets/landing/assets/img/about/2.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2011</h4>
-                                <h4 class="subheading">An Agency is Born</h4>
+                                <h4>2</h4>
+                                <h4 class="subheading">Pilih Produk</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Pilih produk yang anda inginkan pada halaman produk. Anda juga dapat memilih produk yang berbeda dengan menambahkan produk kedalam keranjang.</p></div>
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="<?= base_url()?>assets/landing/assets/img/about/3.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>December 2015</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4>3</h4>
+                                <h4 class="subheading">Lakukan Checkout</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Setelah anda yakin dengan produk yang anda pilih, anda dapat melakukan checkout pada menu keranjang. Pastikan anda telah memilih metode pembayaran dan metode pengiriman yang sesuai.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="<?= base_url()?>assets/landing/assets/img/about/4.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>July 2020</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                                <h4>4</h4>
+                                <h4 class="subheading">Transaksi Berhasil</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body"><p class="text-muted">Terakhir, anda lakukan pembayaran sesuai dengan metode pembayaran yang anda pilih. Lalu, lakukan pembayaran. Maka kasir kami akan segera memproses pesanan anda.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <h4>
-                                Be Part
+                                Senang
                                 <br />
-                                Of Our
+                                Bisa Melayani
                                 <br />
-                                Story!
+                                Anda!
                             </h4>
                         </div>
                     </li>
@@ -213,15 +213,15 @@
         <section class="page-section bg-light" id="team">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">Pengelola SPASI</h2>
+                    <h3 class="section-subheading text-muted">Kenal lebih dekat dengan pengelola SPASI.</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="<?= base_url()?>assets/landing/assets/img/team/1.jpg" alt="..." />
-                            <h4>Parveen Anand</h4>
-                            <p class="text-muted">Lead Designer</p>
+                            <h4>Kasir</h4>
+                            <p class="text-muted">Kasir SPASI</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -230,8 +230,8 @@
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="<?= base_url()?>assets/landing/assets/img/team/2.jpg" alt="..." />
-                            <h4>Diana Petersen</h4>
-                            <p class="text-muted">Lead Marketer</p>
+                            <h4>Admin</h4>
+                            <p class="text-muted">Admin SPASI</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -240,8 +240,8 @@
                     <div class="col-lg-4">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="<?= base_url()?>assets/landing/assets/img/team/3.jpg" alt="..." />
-                            <h4>Larry Parker</h4>
-                            <p class="text-muted">Lead Developer</p>
+                            <h4>Kasir</h4>
+                            <p class="text-muted">Kasir SPASI</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>

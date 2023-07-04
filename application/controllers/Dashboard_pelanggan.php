@@ -25,6 +25,8 @@ class Dashboard_pelanggan extends CI_Controller {
 		$id_transaksi_masuk['a'] = $this->input->get('id');
 		$id_pelanggan = $this->session->userdata('id_pelanggan');
         $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
 
 		$this->load->view('page_pelanggan/templates/header', $title);
         $this->load->view('page_pelanggan/templates/navbar', $dataCount);
@@ -66,6 +68,8 @@ class Dashboard_pelanggan extends CI_Controller {
 		$title['title'] = "Lokasi Pengiriman - SPASI";
 		$id_transaksi_masuk['a'] = $this->input->get('id');
 		$id_pelanggan = $this->session->userdata('id_pelanggan');
+        $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
+		$dataCount['username'] = $this->db->get_where('tb_pelanggan', ['id_pelanggan' => $id_pelanggan])->row_array();
         $dataCount['total'] = $this->M_keranjang->getTotalKeranjang($id_pelanggan);
 
 		$this->load->view('page_pelanggan/templates/header', $title);
@@ -136,6 +140,13 @@ class Dashboard_pelanggan extends CI_Controller {
         
 		$this->db->insert('tb_ulasan', $data);
         redirect('dashboard_pelanggan');
+	}
+
+	public function ubah_status($id_transaksi_masuk)
+	{
+		$this->M_transaksi->ubahStatus($id_transaksi_masuk);
+
+		redirect('dashboard_pelanggan');
 	}
 
 }

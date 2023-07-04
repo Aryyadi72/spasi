@@ -20,7 +20,7 @@
 
                   <div class="col-auto ms-auto d-print-none">
                     <div class="btn-list"  hidden>
-                      <a href="#" class="btn btn-teal d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
+                      <a href="#" class="btn btn-teal d-none d-sm-inline-block">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-spreadsheet" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
@@ -46,37 +46,37 @@
               <div class="card">
                 <div class="card-body">
                   <div id="table-default" class="table-responsive">
-                    <table class="table">
+                    <table class="table" id="dashpel">
                       <thead>
                         <tr>
-                          <th><button class="table-sort" data-sort="sort-No">No</button></th>
-                          <th><button class="table-sort" data-sort="sort-date">Tanggal Pemesanan</button></th>
-                          <th><button class="table-sort" data-sort="sort-total">Harga Satuan</button></th>
-                          <th><button class="table-sort" data-sort="sort-pelanggan">Jumlah</button></th>
-                          <th><button class="table-sort" data-sort="sort-total">Total Harga</button></th>
-                          <th><button class="table-sort" data-sort="sort-ket">Keterangan</button></th>
-                          <th><button class="table-sort" data-sort="sort-produk">Metode Pembayaran</button></th>
-                          <th><button class="table-sort" data-sort="sort-produk">Metode Pengiriman</button></th>
-                          <th><button class="table-sort" data-sort="sort-produk">Kode Invoice</button></th>
-                          <th><button class="table-sort" data-sort="sort-pelanggan">Status</button></th>
-                          <th><button class="table-sort" data-sort="sort-aksi">Aksi</button></th>
+                          <th>No</th>
+                          <th>Tanggal Pemesanan</th>
+                          <th>Harga Satuan</th>
+                          <th>Jumlah</th>
+                          <th>Total Harga</th>
+                          <th>Keterangan</th>
+                          <th>Metode Pembayaran</th>
+                          <th>Metode Pengiriman</th>
+                          <th>Kode Invoice</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
                         </tr>
                       </thead>
-                      <tbody class="table-tbody">
+                      <tbody>
                         <tr>
                           <?php 
                             $no=1; 
                             foreach($transaksi as $tm) {
                           ?>
-                          <td class="sort-no"><?= $no++ ?></td>
-                          <td class="sort-date" data-date="1628071164"><?= $tm->tanggal_transakasi_masuk ?></td>
-                          <td class="sort-pelanggan"><?= 'Rp ' . number_format($tm->harga_produk, 0, ',', '.'); ?></td>
-                          <td class="sort-pelanggan"><?= $tm->jumlah ?></td>
-                          <td class="sort-total"><?= 'Rp ' . number_format($tm->total_harga, 0, ',', '.'); ?></td>
-                          <td class="sort-ket"><?= $tm->keterangan ?></td>
-                          <td class="sort-produk"><?= $tm->metode_pembayaran ?></td>
-                          <td class="sort-produk"><?= $tm->metode_pengiriman ?></td>
-                          <td class="sort-produk"><?= $tm->id_invoice ?></td>
+                          <td><?= $no++ ?></td>
+                          <td><?= $tm->tanggal_transakasi_masuk ?></td>
+                          <td><?= 'Rp ' . number_format($tm->harga_produk, 2, ',', '.'); ?></td>
+                          <td><?= $tm->jumlah ?></td>
+                          <td><?= 'Rp ' . number_format($tm->total_harga, 2, ',', '.'); ?></td>
+                          <td><?= $tm->keterangan ?></td>
+                          <td><?= $tm->metode_pembayaran ?></td>
+                          <td><?= $tm->metode_pengiriman ?></td>
+                          <td><?= $tm->id_invoice ?></td>
 
                           <?php 
                             $status = $tm->status;
@@ -91,13 +91,16 @@
                                   case 'Dibatalkan':
                                       $badgeClass = 'bg-red';
                                       break;
+                                  case 'Diterima':
+                                      $badgeClass = 'bg-secondary';
+                                      break;
                                   default:
                                       $badgeClass = 'bg-blue';
                                       break;
                               }
                           ?>
 
-                          <td style="margin:20px;padding:5px;" class="badge <?= $badgeClass; ?>"><?= $status ?></td>
+                          <td><span class="badge <?= $badgeClass; ?>"><?= $tm->status ?></span></td>
 
                           <td>
                             <div class="row g-2 align-items-center">
@@ -108,7 +111,7 @@
                                   $iconClass = '';
                                     switch ($kirim) {
                                         case 'Kirim ke Alamat Tujuan':
-                                            $hrefClass = 'dashboard_pelanggan/lokasi_pengiriman';
+                                            $hrefClass = 'dashboard_pelanggan/lokasi_pengiriman/?id='. $tm->id_transaksi_masuk;
                                             $clrbClass = 'btn btn-green w-100 btn-icon btn-sm';
                                             $iconClass = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -123,7 +126,7 @@
                                     }
                                 ?>
 
-                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="">
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="" data-bs-toggle="tooltip" data-bs-placement="right" title="Upload Titik Pengiriman">
                                   <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
                                     <?= $iconClass; ?>
                                   </a>
@@ -148,8 +151,8 @@
                                             break;
                                     }
                                 ?>
-                                <!-- Button Rating -->
-                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
+                                
+                                <div class="col-6 col-sm-4 col-md-2 col-xl-auto" data-bs-toggle="tooltip" data-bs-placement="right" title="Upload Bukti Transfer">
                                   <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
 
                                     <?= $iconClass; ?>
@@ -158,7 +161,7 @@
                                 </div>
 
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-                                  <a href="<?= base_url('dashboard_pelanggan/invoice/'.$tm->id_invoice) ?>" class="btn btn-green w-100 btn-icon btn-sm">
+                                  <a href="<?= base_url('dashboard_pelanggan/invoice/'.$tm->id_invoice) ?>" class="btn btn-green w-100 btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="Detail Invoice">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
@@ -168,12 +171,24 @@
                                     </svg>
                                   </a>
                                   <br>
-                                  <a href="<?= base_url('dashboard_pelanggan/tambah_rating?id='.$tm->id_produk) ?>" class="btn btn-yellow w-100 btn-icon btn-sm" style="margin-top:5px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                  <?php if ($tm->status == 'Selesai'): ?>
+                                  <a href="<?= site_url('dashboard_pelanggan/ubah_status/'.$tm->id_transaksi_masuk) ?>" class="btn btn-secondary w-100 btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="Konfirmasi Pesanan Diterima">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
-                                    </svg>
+                                        <path d="M7 12l5 5l10 -10"></path>
+                                        <path d="M2 12l5 5m5 -5l5 -5"></path>
+                                      </svg>
                                   </a>
+                                  <?php endif; ?>
+                                  
+                                  <?php if ($tm->status == 'Diterima'): ?>
+                                    <a href="<?= base_url('dashboard_pelanggan/tambah_rating?id='.$tm->id_produk) ?>" class="btn btn-yellow w-100 btn-icon btn-sm" style="margin-top:5px;" data-bs-toggle="tooltip" data-bs-placement="right" title="Rate Produk">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+                                        </svg>
+                                    </a>
+                                <?php endif; ?>
                               </div>
 
                               </div>
