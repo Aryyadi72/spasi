@@ -107,48 +107,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-10">
-                    <div class="col-auto ms-auto d-print-none">
-                      <div class="btn-list">
-                        <form action="<?php echo base_url('Export_laporan'); ?>" method="get">
-                            <!-- <label for="bulan">Filter Bulan:</label> -->
-                            <select class="form-select" name="bulan" id="bulan">
-                                <option selected disabled>Pilih Bulan</option>
-                                <option value="01">Januari</option>
-                                <option value="02">Februari</option>
-                                <option value="03">Maret</option>
-                                <option value="04">April</option>
-                                <option value="05">Mei</option>
-                                <option value="06">Juni</option>
-                                <option value="07">Juli</option>
-                                <option value="08">Agustus</option>
-                                <option value="09">September</option>
-                                <option value="10">Oktober</option>
-                                <option value="11">November</option>
-                                <option value="12">Desember</option>
-                                <!-- Add more options for each month -->
-                            </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-2" style="padding-left:50px;">
-                    <div class="col-auto ms-auto d-print-none">
-                      <div class="btn-list">
-                            <button type="submit" class="btn btn-teal d-none d-sm-inline-block">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-spreadsheet" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                                <path d="M8 11h8v7h-8z"></path>
-                                <path d="M8 15h8"></path>
-                                <path d="M11 11v7"></path>
-                              </svg>  
-                              Export to Excel
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
                   <div class="col-12">
                     <div class="card">
                       <div class="card-header">
@@ -170,16 +128,37 @@
                         <div class="tab-content">
                           <div class="tab-pane active show" id="tabs-home-7">
                             <h4>Tab Transaksi Masuk</h4><br>
-                              <table border="0" cellspacing="5" cellpadding="5">
-                                <tbody><tr>
-                                    <td>Minimum date:</td>
-                                    <td><input type="text" id="min" name="min"></td>
-                                </tr>
-                                <tr>
-                                    <td>Maximum date:</td>
-                                    <td><input type="text" id="max" name="max"></td>
-                                </tr>
-                            </tbody></table>
+                              <form action="<?php echo base_url('Export_laporan'); ?>" method="get">
+                                <table border="0" cellspacing="5" cellpadding="5">
+                                  <tbody>
+                                    <tr>
+                                      <td>Minimum date:</td>
+                                      <td><input type="text" id="min" name="min"></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Maximum date:</td>
+                                      <td><input type="text" id="max" name="max"></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <br>
+                                <div class="col-auto ms-auto d-print-none">
+                                  <div class="btn-list">
+                                    <button type="submit" class="btn btn-teal d-none d-sm-inline-block">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-spreadsheet" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                        <path d="M8 11h8v7h-8z"></path>
+                                        <path d="M8 15h8"></path>
+                                        <path d="M11 11v7"></path>
+                                      </svg>  
+                                      Export to Excel
+                                    </button>
+                                  </div>
+                                </div>
+                                <br>
+                              </form>
                             <table id="examplea" class="display nowrap" style="width:100%">
                                 <thead>
                                     <tr>
@@ -303,3 +282,20 @@
             </div>
           </div>
         </div>
+
+        <script>
+          function formatDate(dateString) {
+            var date = new Date(dateString);
+            var year = date.getFullYear();
+            var month = ("0" + (date.getMonth() + 1)).slice(-2);
+            var day = ("0" + date.getDate()).slice(-2);
+            return year + "-" + month + "-" + day;
+          }
+
+          document.querySelector("form").addEventListener("submit", function(event) {
+            var minInput = document.getElementById("min");
+            var maxInput = document.getElementById("max");
+            minInput.value = formatDate(minInput.value);
+            maxInput.value = formatDate(maxInput.value);
+          });
+        </script>

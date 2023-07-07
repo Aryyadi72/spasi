@@ -216,5 +216,20 @@
             $this->db->where('id_transaksi_masuk', $id_transaksi_masuk);
             $this->db->update('tb_transaksi_masuk', $data);
         }
+
+        public function get_data_by_date_range($minDateFormatted, $maxDateFormatted)
+        {
+            // Modify the query based on your table structure and column names
+            $this->db->select('*');
+            $this->db->from('tb_transaksi_masuk', 'tb_transaksi_keluar');
+            $this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan = tb_transaksi_masuk.id_pelanggan');
+            $this->db->join('tb_produk', 'tb_produk.id_produk = tb_transaksi_masuk.id_produk');
+            $this->db->join('tb_sasirangan', 'tb_sasirangan.id_sasirangan = tb_produk.id_sasirangan');
+            $this->db->join('tb_transaksi_keluar', 'tb_transaksi_keluar.id_transaksi_masuk = tb_transaksi_masuk.id_transaksi_masuk');
+            $this->db->where('tanggal_transakasi_masuk >=', $minDateFormatted);
+            $this->db->where('tanggal_transakasi_masuk <=', $maxDateFormatted);
+            $query = $this->db->get();
+            return $query;
+        }
     } 
 ?>

@@ -16,9 +16,25 @@ class Export_laporan extends CI_Controller {
 
     public function index()
     {
-        $selectedMonth = $this->input->get('bulan');
+        // $selectedMonth = $this->input->get('bulan');
+        $selectedMin = $this->input->get('min');
+        $selectedMax = $this->input->get('max');
+
+        if (!empty($selectedMin) && !empty($selectedMax)) {
+            $minDateFormatted = date('Y-m-d', strtotime($selectedMin));
+            $maxDateFormatted = date('Y-m-d', strtotime($selectedMax));
+
+            // ...
+            // Lakukan proses export ke Excel
+            // ...
+        } else {
+            // Tampilkan pesan error jika nilai min dan max kosong
+            echo "Error: Minimum and maximum dates are required.";
+        }
+
          // Retrieve data from the database
-        $data = $this->M_transaksi->get_data_by_month($selectedMonth)->result();
+        // $data = $this->M_transaksi->get_data_by_month($selectedMonth)->result();
+        $data = $this->M_transaksi->get_data_by_date_range($minDateFormatted, $maxDateFormatted)->result();
         // $data = $this->M_transaksi->show_data_dashadmin()->result();
 
         // Create a new PhpSpreadsheet object
@@ -83,4 +99,5 @@ class Export_laporan extends CI_Controller {
         // Output the Excel file to the browser
         $writer->save('php://output');
     }
+
 }

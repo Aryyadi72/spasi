@@ -288,17 +288,19 @@ class Transaksi_masuk extends CI_Controller {
 
 	public function proses_transaksi_banyak($id)
 	{
-		$selectedItems = $this->input->post('selected_items');
-		$keterangan = $this->input->post('keterangan');
-		$status = $this->input->post('status');
+		$selectedItems 	= $this->input->post('selected_items');
+		$keterangan 	= $this->input->post('keterangan');
+		$status 		= $this->input->post('status');
+		$resiNumber 	= random_int(1000000000, 9999999999);
 
 		$this->db->trans_start(); // Memulai transaksi
 
 		foreach ($selectedItems as $itemId) {
 			// Perubahan data pada tabel transaksi_masuk
 			$data_transaksi_masuk = array(
-				'keterangan' => $keterangan,
-				'status' => $status,
+				'keterangan' 	=> $keterangan,
+				'status' 		=> $status,
+				'no_resi' 		=> $resiNumber,
 			);
 			$this->db->where('id_transaksi_masuk', $itemId);
 			$this->db->update('tb_transaksi_masuk', $data_transaksi_masuk);

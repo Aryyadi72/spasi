@@ -73,7 +73,10 @@
                           <td><?= 'Rp ' . number_format($tm->harga_produk, 2, ',', '.'); ?></td>
                           <td><?= $tm->jumlah ?></td>
                           <td><?= 'Rp ' . number_format($tm->total_harga, 2, ',', '.'); ?></td>
-                          <td><?= $tm->keterangan ?></td>
+                          <td>
+                            <?= $tm->keterangan ?><br><br>
+                            No. Resi = <?= $tm->no_resi ?>
+                          </td>
                           <td><?= $tm->metode_pembayaran ?></td>
                           <td><?= $tm->metode_pengiriman ?></td>
                           <td><?= $tm->id_invoice ?></td>
@@ -126,11 +129,13 @@
                                     }
                                 ?>
 
+                                <?php if ($tm->status !== 'Diterima'): ?>
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto" style="" data-bs-toggle="tooltip" data-bs-placement="right" title="Upload Titik Pengiriman">
                                   <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
                                     <?= $iconClass; ?>
                                   </a>
                                 </div>
+                                <?php endif; ?>
 
                               <?php 
                                   $bayar = $tm->metode_pembayaran;
@@ -152,6 +157,7 @@
                                     }
                                 ?>
                                 
+                                <?php if ($tm->status !== 'Diterima'): ?>
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto" data-bs-toggle="tooltip" data-bs-placement="right" title="Upload Bukti Transfer">
                                   <a href="<?= $hrefClass; ?>" class="<?= $clrbClass; ?>">
 
@@ -159,6 +165,7 @@
                                     
                                   </a>
                                 </div>
+                                <?php endif; ?>
 
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto">
                                   <a href="<?= base_url('dashboard_pelanggan/invoice/'.$tm->id_invoice) ?>" class="btn btn-green w-100 btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="Detail Invoice">

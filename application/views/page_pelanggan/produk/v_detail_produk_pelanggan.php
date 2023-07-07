@@ -89,6 +89,7 @@
                         <div>
                           <?php foreach($ulasan as $u) : ?>
                             <?= $u['deskripsi'] ?><br>
+                            rating : <?= $u['rating'] ?><br>
                             oleh: <?= $u['nama_pelanggan'] ?><br><hr>
                           <?php endforeach; ?>
                         </div>

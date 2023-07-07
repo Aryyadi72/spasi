@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 26, 2023 at 09:08 PM
+-- Generation Time: Jul 07, 2023 at 01:49 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -33,7 +33,7 @@ CREATE TABLE `tb_keranjang` (
   `total_harga` varchar(100) NOT NULL,
   `id_pelanggan` int NOT NULL,
   `id_produk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_keranjang`
@@ -51,7 +51,7 @@ INSERT INTO `tb_keranjang` (`id_keranjang`, `jumlah`, `total_harga`, `id_pelangg
 CREATE TABLE `tb_level` (
   `id_level` int NOT NULL,
   `level` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_level`
@@ -70,14 +70,14 @@ INSERT INTO `tb_level` (`id_level`, `level`) VALUES
 
 CREATE TABLE `tb_pelanggan` (
   `id_pelanggan` int NOT NULL,
-  `nama_pelanggan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_pelanggan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `no_telp` varchar(100) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `id_level` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_pelanggan`
@@ -86,7 +86,8 @@ CREATE TABLE `tb_pelanggan` (
 INSERT INTO `tb_pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_telp`, `foto`, `username`, `password`, `id_level`) VALUES
 (1, 'Bodet', 'Tambang Ulang', '0878123455', 'unnamed.png', 'pelanggan', '202cb962ac59075b964b07152d234b70', 3),
 (4, 'Rika', 'Angsau Kyoto', '0878123455', 'unnamed5.png', 'rika', '2f6b87bf490402877f19ee52998f2fa6', 3),
-(5, 'Ayu', 'Pelaihari', '0878123456', 'kantor-1.png', 'ayu', '202cb962ac59075b964b07152d234b70', 3);
+(5, 'Ayu', 'Pelaihari', '0878123456', 'kantor-1.png', 'ayu', '202cb962ac59075b964b07152d234b70', 3),
+(6, 'Mayura', 'Tambang Ulang', '0878123459', '334399169_576164487871985_7966346556442396400_n.jpg', 'mayura', '202cb962ac59075b964b07152d234b70', 3);
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE `tb_pengelola` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `id_level` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_pengelola`
@@ -127,15 +128,15 @@ CREATE TABLE `tb_produk` (
   `stok` int NOT NULL,
   `tanggal_ditambahkan` date NOT NULL,
   `id_sasirangan` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_produk`
 --
 
 INSERT INTO `tb_produk` (`id_produk`, `harga_produk`, `deskripsi_produk`, `stok`, `tanggal_ditambahkan`, `id_sasirangan`) VALUES
-(10, '20000', 'Sasirangan Bagus Ajib', 4, '2023-05-25', 3),
-(11, '25500', 'Model sasirangan baru', 12, '2023-06-13', 2);
+(10, '20000', 'Sasirangan Bagus Ajib', 2, '2023-05-25', 3),
+(11, '25500', 'Model sasirangan baru', 5, '2023-06-13', 2);
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,7 @@ CREATE TABLE `tb_sasirangan` (
   `nama_sasirangan` varchar(100) NOT NULL,
   `jenis_sasirangan` varchar(100) NOT NULL,
   `foto_sasirangan` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_sasirangan`
@@ -168,7 +169,7 @@ CREATE TABLE `tb_struk` (
   `id_struk` int NOT NULL,
   `file_struk` varchar(255) NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -179,9 +180,16 @@ CREATE TABLE `tb_struk` (
 CREATE TABLE `tb_titik_pengiriman` (
   `id_titik_pengiriman` int NOT NULL,
   `alamat_tujuan` varchar(100) NOT NULL,
-  `latlong` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latlong` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_titik_pengiriman`
+--
+
+INSERT INTO `tb_titik_pengiriman` (`id_titik_pengiriman`, `alamat_tujuan`, `latlong`, `id_transaksi_masuk`) VALUES
+(3, 'Tambang Ulang', '-3.642443531273461, 114.75710919772108', 57);
 
 -- --------------------------------------------------------
 
@@ -194,7 +202,7 @@ CREATE TABLE `tb_transaksi_batal` (
   `tanggal_transaksi_batal` date NOT NULL,
   `id_pengelola` int NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_transaksi_batal`
@@ -215,7 +223,7 @@ CREATE TABLE `tb_transaksi_keluar` (
   `id_pengelola` int NOT NULL,
   `tanggal_transaksi_keluar` date NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_transaksi_keluar`
@@ -224,7 +232,11 @@ CREATE TABLE `tb_transaksi_keluar` (
 INSERT INTO `tb_transaksi_keluar` (`id_transaksi_keluar`, `tanggal_transaksi_proses`, `id_pengelola`, `tanggal_transaksi_keluar`, `id_transaksi_masuk`) VALUES
 (1, '2023-06-26', 2, '2023-06-26', 52),
 (2, '2023-06-26', 2, '2023-06-26', 53),
-(3, '2023-06-26', 2, '2023-06-26', 55);
+(3, '2023-06-26', 2, '2023-06-26', 55),
+(4, '2023-07-01', 2, '2023-07-01', 59),
+(5, '2023-07-04', 2, '2023-07-04', 58),
+(6, '2023-07-07', 2, '2023-07-07', 57),
+(7, '2023-07-07', 2, '2023-07-07', 60);
 
 -- --------------------------------------------------------
 
@@ -239,22 +251,27 @@ CREATE TABLE `tb_transaksi_masuk` (
   `metode_pembayaran` varchar(100) NOT NULL,
   `metode_pengiriman` varchar(100) NOT NULL,
   `total_harga` varchar(100) NOT NULL,
-  `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `status` varchar(100) NOT NULL,
   `id_pelanggan` int NOT NULL,
   `id_produk` int NOT NULL,
-  `id_invoice` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_invoice` varchar(100) NOT NULL,
+  `no_resi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_transaksi_masuk`
 --
 
-INSERT INTO `tb_transaksi_masuk` (`id_transaksi_masuk`, `tanggal_transakasi_masuk`, `jumlah`, `metode_pembayaran`, `metode_pengiriman`, `total_harga`, `keterangan`, `status`, `id_pelanggan`, `id_produk`, `id_invoice`) VALUES
-(52, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '20000', 'Transaksi Diproses', 'Selesai', 5, 10, '8901'),
-(53, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '25500', 'Transaksi Diproses', 'Selesai', 5, 11, '8901'),
-(55, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '20000', 'Transaksi Diproses.', 'Selesai', 5, 10, '8386'),
-(56, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '25500', 'Transaksi Dibatalkan.', 'Dibatalkan', 5, 11, '8699');
+INSERT INTO `tb_transaksi_masuk` (`id_transaksi_masuk`, `tanggal_transakasi_masuk`, `jumlah`, `metode_pembayaran`, `metode_pengiriman`, `total_harga`, `keterangan`, `status`, `id_pelanggan`, `id_produk`, `id_invoice`, `no_resi`) VALUES
+(52, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '20000', 'Transaksi Diproses', 'Diterima', 5, 10, '8901', ''),
+(53, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '25500', 'Transaksi Diproses', 'Selesai', 5, 11, '8901', ''),
+(55, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '20000', 'Transaksi Diproses.', 'Diterima', 5, 10, '8386', ''),
+(56, '2023-06-26', 1, 'Cash', 'Ambil di Tempat', '25500', 'Transaksi Dibatalkan.', 'Dibatalkan', 5, 11, '8699', ''),
+(57, '2023-06-27', 5, 'Transfer', 'Kirim ke Alamat Tujuan', '127500', 'Pesanan Diproses.', 'Diterima', 5, 11, '9220', '1917739713'),
+(58, '2023-06-27', 2, 'Cash', 'Ambil di Tempat', '51000', 'Pesanan Diproses.', 'Diterima', 5, 11, '5534', ''),
+(59, '2023-01-18', 1, 'Cash', 'Ambil di Tempat', '20000', 'Pesanan Diproses', 'Selesai', 1, 10, '3456', ''),
+(60, '2023-07-07', 1, 'Transfer', 'Kirim ke Alamat Tujuan', '20000', 'Pesanan Diproses.', 'Diterima', 5, 10, '3139', '4376451190');
 
 -- --------------------------------------------------------
 
@@ -267,7 +284,7 @@ CREATE TABLE `tb_transaksi_proses` (
   `tanggal_transaksi_proses` date NOT NULL,
   `id_pengelola` int NOT NULL,
   `id_transaksi_masuk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -281,7 +298,7 @@ CREATE TABLE `tb_ulasan` (
   `deskripsi` varchar(255) NOT NULL,
   `id_pelanggan` int NOT NULL,
   `id_produk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tb_ulasan`
@@ -289,7 +306,8 @@ CREATE TABLE `tb_ulasan` (
 
 INSERT INTO `tb_ulasan` (`id_ulasan`, `rating`, `deskripsi`, `id_pelanggan`, `id_produk`) VALUES
 (1, 3, 'Bagus', 5, 10),
-(2, 3, 'Bagus', 5, 10);
+(2, 3, 'Bagus', 5, 10),
+(3, 5, 'Okedeh', 5, 11);
 
 --
 -- Indexes for dumped tables
@@ -397,7 +415,7 @@ ALTER TABLE `tb_ulasan`
 -- AUTO_INCREMENT for table `tb_keranjang`
 --
 ALTER TABLE `tb_keranjang`
-  MODIFY `id_keranjang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_keranjang` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `tb_level`
@@ -409,7 +427,7 @@ ALTER TABLE `tb_level`
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `id_pelanggan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pelanggan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_pengelola`
@@ -439,7 +457,7 @@ ALTER TABLE `tb_struk`
 -- AUTO_INCREMENT for table `tb_titik_pengiriman`
 --
 ALTER TABLE `tb_titik_pengiriman`
-  MODIFY `id_titik_pengiriman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_titik_pengiriman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_batal`
@@ -451,25 +469,25 @@ ALTER TABLE `tb_transaksi_batal`
 -- AUTO_INCREMENT for table `tb_transaksi_keluar`
 --
 ALTER TABLE `tb_transaksi_keluar`
-  MODIFY `id_transaksi_keluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_transaksi_keluar` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_masuk`
 --
 ALTER TABLE `tb_transaksi_masuk`
-  MODIFY `id_transaksi_masuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_transaksi_masuk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi_proses`
 --
 ALTER TABLE `tb_transaksi_proses`
-  MODIFY `id_transaksi_proses` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_transaksi_proses` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tb_ulasan`
 --
 ALTER TABLE `tb_ulasan`
-  MODIFY `id_ulasan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ulasan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -14,7 +14,8 @@
                 <div class="mb-3 row">
                     <label class="col-3 col-form-label required">Rating</label>
                     <div class="col">
-                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Rating" name="rating">
+                        <input class="form-range mb-2" type="range" min="1" max="5" step="1" name="rating" id="rating">
+                        <p class="text-muted small lh-base">Keterangan : <span id="rating-label">1</span></p>
                     </div>
                 </div>
 
@@ -34,3 +35,12 @@
         </form>
     </div>
 </div>
+
+<script>
+    var ratingInput = document.getElementById('rating');
+    var ratingLabel = document.getElementById('rating-label');
+
+    ratingInput.addEventListener('input', function() {
+    ratingLabel.textContent = this.value;
+    });
+</script>
